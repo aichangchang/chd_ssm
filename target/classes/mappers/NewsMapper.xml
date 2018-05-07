@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.NewsMapper">
+	<select id="listNews" resultType="cn.com.bean.News">
+		SELECT * FROM news WHERE
+		category_id=#{categoryId} order by id desc limit
+		#{num}
+	</select>
+	<select id="getNewsById" resultType="cn.com.bean.News">
+		SELECT * FROM
+		news
+		WHERE
+		id=#{id}
+	</select>
+	<select id="getNewsByCategoryId" resultType="cn.com.bean.News">
+		SELECT
+		id,
+		title,
+		author,
+		create_time createTime,
+		content,
+		count,
+		categoryId
+		FROM news
+		WHERE
+		category_id=#{categoryId}
+	</select>
+</mapper>
