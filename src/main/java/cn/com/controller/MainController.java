@@ -16,6 +16,7 @@ import cn.com.service.NewsService;
 public class MainController {
 	@Autowired
 	private NewsService newsService;
+
 	@RequestMapping("/index.do")
 	public String index(ModelMap modelMap) {
 		List<News> oneListNews = newsService.listNews(1, 3);

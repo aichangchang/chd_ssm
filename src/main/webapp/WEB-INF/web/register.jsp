@@ -26,7 +26,7 @@
 	<!--背景层-->
 	<div class="zhuce_body">
 		<div class="logo_login">
-			<a href="${base}/main/index.do"><img src="../images/flchildren.jpg" border="0"
+			<a href="${base}/main/index.do"><img src="../images/logo.png" border="0"
 				title="儿童院"></a>
 		</div>
 		<div class="zhuce_kong ">
@@ -34,14 +34,10 @@
 				<div class="bj_left">
 					<h3>欢迎注册</h3>
 					<form id="formZ" name="formZ" action="#" method="post">
-						<input type="text" id="username" name="username"
-							class="kuang_txt phone" placeholder="请输入账号"> <input
-							type="password" id="password" name="password"
-							class="kuang_txt password" placeholder="请输入密码"> <input
-							type="password" id="confirm_password" name="confirm_password"
-							class="kuang_txt password" placeholder="请再确认一次密码"> <input
-							type="text" id="email" name="email" class="kuang_txt email"
-							placeholder="请输入常用邮箱">
+						<input type="text" id="username" name="username" class="kuang_txt phone" placeholder="请输入账号"> 
+							<input type="password" id="password" name="password" class="kuang_txt password" placeholder="请输入密码"> 
+							<input type="password" id="confirm_password" name="confirm_password" class="kuang_txt password" placeholder="请再确认一次密码"> 
+							<input type="text" id="email" name="email" class="kuang_txt email" placeholder="请输入常用邮箱">
 						<div>
 							<input name="security_code" id="security_code" type="text"
 								class="kuang_txt yanzm" placeholder="请输入验证码"> <img
@@ -83,31 +79,6 @@ $("#kaptchaImage").click(function(){
 	});
 $().ready(function() {
 	$("#username").focus();
-	$("#username").keyup(function(){
-		$.ajax({
-			type:"get",
-			url:"registerCheckUsername.do",
-			data:{
-				username:$("#username").val()
-			},
-			dataType:'json',
-			success:function(data){
-				if(data.d==1){
-					$("#createResult").html("已存在该用户名，请更换");
-					$("#createResult").css("color","red");
-					$("#btn_zhuce").attr("disabled","disabled");
-				}
-				if(data.d==2){
-					$("#createResult").html("用户名可用");
-					$("#createResult").css("color","#228B22");
-					$("#btn_zhuce").attr("disabled",false);
-				}
-			},
-			error:function(jqXHR){
-				alert("发生错误"+jqXHR.status);
-			}
-		});
-	});
 	$("#btn_zhuce").click(function(){
 		//先通过button验证表单有效性
 		var flag = $('#formZ').valid();
@@ -120,18 +91,17 @@ $().ready(function() {
 			});
 			$.ajax({
 				type:"POST",
-				url:"doUserAction.do?act=reg",
+				url:"handleRegister.do",
 				data:{
 					username:$("#username").val(),
 					email:$("#email").val(),
-					security_code:$("#security_code").val(),
+					securityCode:$("#security_code").val(),
 					password:$("#password").val(),
-					confirm_password:$("#confirm_password").val(),
 					autoFlag:$("#autoFlag").is(':checked')
 					},
 				dataType:"json",
 				success:function(data){
-					if(data.success){
+					if(data.code==1){
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
 							content:'<span class=\'save_success\'>'+data.msg+'</span>'
@@ -154,9 +124,7 @@ $().ready(function() {
 						},3000);
 					}
 				},
-				error:function(jqXHR){
-					alert("发生错误:"+jqXHR.status);
-				},
+			
 			});
 		}
 	});	
@@ -164,13 +132,22 @@ $().ready(function() {
 	        rules: {
 			    username: {
                     required: true,
-                    maxlength: 11,
-                    minlength:11,
-                    digits:true 
+                	rangelength:[6,12],
+                	remote:{
+                		url:"registerCheckUsername.do",
+                		type:"get",
+                		dateType:"json",
+                		data: {                     
+                	        username: function() {
+                	            return $("#username").val();
+                	        }
+                	    }
+                	}
                 },
 			   password: {
 				    required: true,
-				    minlength: 2
+				    minlength: 2,
+				    rangelength:[6,12]
 			   },
 			   confirm_password: {
 				    required: true,
@@ -181,14 +158,14 @@ $().ready(function() {
 	        messages: 
 	        {
 			      username: {
-                    required: '请输入正确的手机号码',
-                    minlength: '请输入正确的手机号码',
-                    maxlength: '请输入正确的手机号码',
-                    remote: '账号不存在'
+                    required: '请输入用户名',
+                    rangelength:'请输入6-12为的用户名',
+                    remote: '账号已存在'
                 },
 			   password: {
 				    required: "请输入密码",
-				    minlength: jQuery.format("密码不能小于{0}个字 符")
+				    rangelength:'请输入6-12位的密码',
+				    minlength: jQuery.format("密码不能小于{0}个字符")
 			   },
 			   confirm_password: {
 				    required: "请输入确认密码",

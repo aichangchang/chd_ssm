@@ -17,7 +17,7 @@ import com.google.code.kaptcha.Producer;
 
 @Controller
 @RequestMapping("/yz")
-public class CaptchaController {
+public class KaptchaController {
 	@Autowired
 	private Producer kaptchaProducer;
 
