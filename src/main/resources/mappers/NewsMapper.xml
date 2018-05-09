@@ -14,17 +14,4 @@
 		WHERE
 		id=#{id}
 	</select>
-	<select id="getNewsByCategoryId" resultType="cn.com.bean.News">
-		SELECT
-		id,
-		title,
-		author,
-		create_time createTime,
-		content,
-		count,
-		categoryId
-		FROM news
-		WHERE
-		category_id=#{categoryId}
-	</select>
 </mapper>

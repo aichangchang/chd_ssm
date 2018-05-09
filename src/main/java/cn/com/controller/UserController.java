@@ -45,11 +45,11 @@ public class UserController {
 	public ResponseResult<Void> handleRegister(@RequestParam("username") String username, @RequestParam("password") String password,
 			@RequestParam("email") String email,
 			@RequestParam("securityCode")String securityCode,
-			@RequestParam("autoFlag") String autoFlag,
+			@RequestParam("autoFlag") boolean autoFlag,
 			HttpServletRequest request) {
 		String Code =(String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
 		ResponseResult<Void> result= new ResponseResult<Void>();
-		if (Code.toLowerCase().equals(securityCode)){
+		if (Code.toLowerCase().equals(securityCode)&&autoFlag){
 			UserService.register(username, password, email);
 			result.setCode(ResponseResult.STATE_OK);
 			result.setMessage("success");

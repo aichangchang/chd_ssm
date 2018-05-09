@@ -22,9 +22,5 @@ public class NewsServiceImpl implements NewsService {
 		return news;
 	}
 
-	public News getNewsByCategoryId(Integer categoryId) {
-		News news=newsMapper.getNewsByCategoryId(categoryId);
-		return news;
-	}
 
 }

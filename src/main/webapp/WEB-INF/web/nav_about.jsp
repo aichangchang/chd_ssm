@@ -168,7 +168,7 @@ $(document).ready(function(){
 		$(".content_right").load("c_about.do?id=3");
 		break;
 	case 4:
-		$(".content_right").load("c_knowledge.php?id=2");
+		$(".content_right").load("c_about.do?id=4");
 		break;
 	case 13:
 		$(".content_right").load("c_charges.php");

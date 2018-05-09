@@ -42,8 +42,8 @@ public class MainController {
 	}
 
 	@RequestMapping("/c_about.do")
-	public String About(@RequestParam("id") Integer categoryId, ModelMap modelMap) {
-		News news = newsService.getNewsByCategoryId(categoryId);
+	public String About(@RequestParam("id") Integer id, ModelMap modelMap) {
+		News news = newsService.getNewsById(id);
 		modelMap.addAttribute("news", news);
 		return "c_about";
 	}

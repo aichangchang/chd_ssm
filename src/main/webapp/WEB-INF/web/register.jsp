@@ -80,6 +80,7 @@ $("#kaptchaImage").click(function(){
 $().ready(function() {
 	$("#username").focus();
 	$("#btn_zhuce").click(function(){
+	var data = $('#formZ').serialize();	
 		//先通过button验证表单有效性
 		var flag = $('#formZ').valid();
     	if(flag){
@@ -90,18 +91,12 @@ $().ready(function() {
 				d1.show();					 
 			});
 			$.ajax({
-				type:"POST",
-				url:"handleRegister.do",
-				data:{
-					username:$("#username").val(),
-					email:$("#email").val(),
-					securityCode:$("#security_code").val(),
-					password:$("#password").val(),
-					autoFlag:$("#autoFlag").is(':checked')
-					},
-				dataType:"json",
-				success:function(data){
-					if(data.code==1){
+				"type":"POST",
+				"url":"handleRegister.do",
+				"data":data,
+				"dataType":"json",
+				success:function(obj){
+					if(obj.code==1){
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
 							content:'<span class=\'save_success\'>'+data.msg+'</span>'
@@ -135,7 +130,7 @@ $().ready(function() {
                 	rangelength:[6,12],
                 	remote:{
                 		url:"registerCheckUsername.do",
-                		type:"get",
+                		type:"POST",
                 		dateType:"json",
                 		data: {                     
                 	        username: function() {
@@ -146,13 +141,20 @@ $().ready(function() {
                 },
 			   password: {
 				    required: true,
-				    minlength: 2,
+				    minlength: 6,
 				    rangelength:[6,12]
 			   },
 			   confirm_password: {
 				    required: true,
-				    minlength: 2,
+				    minlength: 6,
 				    equalTo: "#password"
+			   },
+			   security_code:{
+				   required: true
+			   },
+			   email:{
+				   required: true,
+				   email:true
 			   }
 	 		},
 	        messages: 
@@ -169,8 +171,15 @@ $().ready(function() {
 			   },
 			   confirm_password: {
 				    required: "请输入确认密码",
-				    minlength: "确认密码不能小于2个字符",
+				    minlength: "确认密码不能小于6个字符",
 				    equalTo: "两次输入密码不一致！"
+			   },
+			   security_code:{
+				    required:"验证码不能为空"  
+			   },
+			   email:{
+				   required:"邮箱不能为空",	
+				   email:'请输入正确的邮箱格式'
 			   }
 	  		}	
 	   	 });
