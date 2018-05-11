@@ -36,10 +36,10 @@
 					<form id="formZ" name="formZ" action="#" method="post">
 						<input type="text" id="username" name="username" class="kuang_txt phone" placeholder="请输入账号"> 
 							<input type="password" id="password" name="password" class="kuang_txt password" placeholder="请输入密码"> 
-							<input type="password" id="confirm_password" name="confirm_password" class="kuang_txt password" placeholder="请再确认一次密码"> 
+							<input type="password" id="confirm_password" name="confirmPassword" class="kuang_txt password" placeholder="请再确认一次密码"> 
 							<input type="text" id="email" name="email" class="kuang_txt email" placeholder="请输入常用邮箱">
 						<div>
-							<input name="security_code" id="security_code" type="text"
+							<input name="securityCode" id="security_code" type="text"
 								class="kuang_txt yanzm" placeholder="请输入验证码"> <img
 								src="${base}/yz/kaptcha.do" id="kaptchaImage" title="看不清，点击换一张">
 						</div>
@@ -118,6 +118,9 @@ $().ready(function() {
 							d.close().remove();
 						},3000);
 					}
+				},
+				error:function(jqXHR){
+					alert("发生错误:"+jqXHR.status);
 				},
 			
 			});

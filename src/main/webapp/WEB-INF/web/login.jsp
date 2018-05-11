@@ -21,7 +21,7 @@
 <body>
 <div id="background"></div><!--背景层-->
 <div class="zhuce_body">
-	<div class="logo_login"><a href="index.php"><img src="../images/logo1.png" alt="logo" border="0"></a></div>
+	<div class="logo_login"><a href="index.php"><img src="../images/logo.png" alt="logo" border="0"></a></div>
     <div class="zhuce_kong login_kuang">
     	<div class="zc">
         	<div class="bj_left"><!--左边输入框-->
@@ -60,34 +60,34 @@ $().ready(function() {
 			var flag = $('#formD').valid();//验证表单有效性
 	    	if(flag){
 				$.ajax({
-					type:"GET",
+					type:"POST",
 					//url:"login.php?username="+$("#username").val(),
-					url:"doUserAction.php?act=login",
+					url:"handleLogin.do",
 					data:{
 						username:$("#username").val(),
 						password:$("#password").val(),
-						autoFlag:$("#autoFlag").is(':checked')
 						},
 					dataType:"json",
 					success:function(data){
-						if(data.success){
+						if(data.code==1){
 							$(".save_start").css("display",'none');
 							$("#createResult").css({"display":'block',"color":"#228b22"});
 							$("#createResult").html(data.msg);
+							saveCookie()
 							window.location="${base}/main/index.do";
 						}
 						else{
 							$(".save_start").css("display",'none');
 							$("#createResult").css({"display":'block',"color":"red"});
 							$("#createResult").html(data.msg);
-							setTimeout(function(){
+							setTimeout(function(jqXHR){
 								$("#createResult").css("display",'none');
 							},2000);
 							$("#password").val("");
 						}
 					},
 					error:function(jqXHR){
-						alert("发生错误:"+jqXHR.status);
+						alert("发生错误:"+jqXHR.message);
 					},
 				});
 			}
@@ -97,25 +97,25 @@ $().ready(function() {
 	        rules: {
 			    username: {
                     required: true,
-                    minlength: 2,
-                    maxlength: 20
+                    rangelength:[6,12]
                },
 			   password: {
 				    required: true,
-				    minlength: 2
+				    minlength: 2,
+				    rangelength:[6,12]
 			   },
 	 		},
 	        messages: 
 	        {
 			   username: {
                     required: '请输入用户名',
-                    minlength: '账号不能小于2个字符',
-                    maxlength: '账号不能超过20个字符',
+                    rangelength:'请输入6-12位的用户名',
                     remote: '账号不存在'
                },
 			   password: {
 				    required: "请输入密码",
-				    minlength: jQuery.format("密码不能小于{0}个字 符")
+				    minlength: jQuery.format("密码不能小于{0}个字 符"),
+				    rangelength:'请输入6-12位的密码',
 			   }
 	  		}	
 	   });
@@ -128,7 +128,31 @@ $().ready(function() {
 			$("#btn_denglu").click();
 		}
 	}
+</script>
+<script src="../js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($.cookie("rmbUser") == "true") {
+            $("#autoFlag").attr("checked", true);
+            $("#username").val($.cookie("username"));
+            $("#password").val($.cookie("password"));
+        }
+    });
 
+    //记住用户名密码
+    function saveCookie() {
+        if ($("#autoFlag").prop("checked")) {
+            var str_username = $("#username").val();
+            var str_password = $("#password").val();
+            $.cookie("rmbUser", "true", { expires: 7 }); //存储一个带7天期限的cookie
+            $.cookie("username", str_username, { expires: 7 });// 存储一个带7天期限的 cookie  
+            $.cookie("password", str_password, { expires: 7 }); // 存储一个带7天期限的 cookie  
+        } else {
+            $.cookie("rmbUser", "false", { expire: -1 });// 删除 cookie 
+            $.cookie("username", "", { expires: -1 });
+            $.cookie("password", "", { expires: -1 });
+        }
+    };
 </script>
 </body>
 

@@ -3,10 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.com.dao.UserMapper">
-	<select id="fingUserByUsername" resultType="cn.com.bean.User">
+	<select id="findUserByUsername" resultType="cn.com.bean.User">
 		SELECT * FROM user WHERE username=#{username}
 	</select>
-	<select id="saveUser">
+	<insert id="saveUser">
 		INSERT INTO user (username,password,email) values(#{username},#{password},#{email})
+	</insert>
+	<select id="findUserPasswordByUsername" resultType="cn.com.bean.User">
+			SELECT password From user WHERE username=#{username}
 	</select>
 </mapper>

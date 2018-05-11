@@ -77,44 +77,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<div class="top" id="top">
-		<div class="top_content">
-			<div class="top_content_l">
-				<a href="admin/index.php" target="_blank" class="backstage">进入后台管理系统</a>
-			</div>
-			<?php if($userInfo['id']):?>
-			<ul class="top_content_user">
-				<li>
-					<span>欢迎您</span>
-				</li>	
-				<li class="top_content_nav">
-					<div id="pic_tx">
-						<img alt="我的头像" width="20" height="20" src="" />
-					</div>
-					<a class="user" href="javascript:;"><?php echo $userInfo['u_name']?$userInfo['u_name']:$userInfo['u_username'];?><i class="user_ico"></i></a>
-						<div class="userCard">
-							<a href="personal_info.php">个人中心</a>
-							<a href="doUserAction.php?act=userOut">退出</a>
-						</div>
-				</li>
-			</ul>
-			<?php else:?>
-			<ul class="top_content_r">
-				<li><a href="login.html">请登录</a></li>
-				<li><a class="top_zc" href="reg.html">注册</a></li>
-			</ul>
-			<?php endif;?>
-		</div>
-	</div>	
-	<!--页面顶部top结束-->
-	<div class="wrap_logo">
-	<div class="logo">
-			<div class="logo_left"><a href="#"><img src="../images/logo.gif"/></a> </div>
-			<div class="logo_right"><img src="../images/tel.jpg" width="28" height="28" />24小时服务热线：<span class="tel">158-8827-4549</span></div>
-			<div class="user_mobile"><img src="../images/user_green.png"/></div>
-	</div>
-	</div>
-	<!--logo结束-->
 	<c:import url="header.jsp"></c:import>
 	  <!--nav结束-->
  <div class="wrap">

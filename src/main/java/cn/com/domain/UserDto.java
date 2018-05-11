@@ -14,6 +14,8 @@ public class UserDto {
 	@NotEmpty(message = "请输入密码")
 	@Size (min=6, max=12, message="密码长度只能在6-12之间")
 	private String password;
+	@NotEmpty(message="请输确认密码")
+	private String confirmPassword;
 	@NotEmpty(message = "请输入邮箱")
 	@Email(message="邮箱格式错误")
 	private String email;
@@ -60,6 +62,14 @@ public class UserDto {
 
 	public void setAutoFlag(boolean autoFlag) {
 		this.autoFlag = autoFlag;
+	}
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	@Override

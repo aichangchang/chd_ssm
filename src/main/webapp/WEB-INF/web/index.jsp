@@ -82,40 +82,6 @@
 </script>
 </head>
 <body>
-	<div class="top" id="top">
-		<div class="top_content">
-			<div class="top_content_l">
-				<a href="admin/index.php" target="_blank" title="进入后台管理系统" class="backstage">进入后台管理系统</a>
-			</div>
-			<ul class="top_content_user">
-				<li>
-					<span>欢迎您</span>
-				</li>	
-				<li class="top_content_nav">
-					<div id="pic_tx">
-						<img alt="我的头像" width="20" height="20" src=/>
-					</div>
-					<a class="user" href="javascript:;"><?php echo $userInfo['u_name']?$userInfo['u_name']:$userInfo['u_username'];?><i class="user_ico"></i></a>
-						<div class="userCard">
-							<a href="personal_info.php">个人中心</a>
-							<a href="doUserAction.php?act=userOut">退出</a>
-						</div>
-				</li>
-			</ul>
-			<ul class="top_content_r">
-				<li><a href="${base}/user/login.do">请登录</a></li>
-				<li><a class="top_zc" href="${base}/user/register.do">注册</a></li>
-			</ul>
-		</div>
-	</div>	
-	<!--页面顶部top结束-->
-	<div class="wrap_logo">
-		<div class="logo">
-				<div class="logo_left"><img src="../images/LOGO.jpg"/></div>
-				<div class="logo_right"><img src="../images/tel.jpg" width="28" height="28" />24小时服务热线：<span class="tel">158-XXXX-XXXX</span></div>
-				<div class="user_mobile"><img src="../images/user_green.png"/></div>
-		</div>
-	</div>
 	<!--wrap_logo结束-->
 	  <c:import url="header.jsp"></c:import>
 		<!--nav_mid结束-->
@@ -327,8 +293,6 @@
 		<!--history结束-->
 	</div>
 	<!--wrap结束-->
-	<!--乐佰年入口-->
-	<a class="lbn" href="LBN/index.html" target="_blank" title="乐佰年"><p>乐佰年</p></a>
 	<!--to_top-->
 	<a id="to_top" class="clearfix" href="javascript:;" title="回到顶部"></a>
 	
