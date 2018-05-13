@@ -6,6 +6,7 @@ public class User {
 	private Integer id;
 	private String username;
 	private String password;
+	private String name;
 	private String gender;
 	private Integer age;
 	private Date birthday;
@@ -14,9 +15,9 @@ public class User {
 	private String maritalStatus;
 	private String phone;
 	private String email;
+	private String children;
 	private String idNumber;
 	private String address;
-	private String caseHistory;
 	public Integer getId() {
 		return id;
 	}
@@ -34,6 +35,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getGender() {
 		return gender;
@@ -95,18 +102,20 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getCaseHistory() {
-		return caseHistory;
+	
+	public String getChildren() {
+		return children;
 	}
-	public void setCaseHistory(String caseHistory) {
-		this.caseHistory = caseHistory;
+	public void setChildren(String children) {
+		this.children = children;
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", gender=" + gender + ", age="
-				+ age + ", birthday=" + birthday + ", nation=" + nation + ", education=" + education
-				+ ", maritalStatus=" + maritalStatus + ", phone=" + phone + ", email=" + email + ", idNumber="
-				+ idNumber + ", address=" + address + ", caseHistory=" + caseHistory + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", gender="
+				+ gender + ", age=" + age + ", birthday=" + birthday + ", nation=" + nation + ", education=" + education
+				+ ", maritalStatus=" + maritalStatus + ", phone=" + phone + ", email=" + email + ", children="
+				+ children + ", idNumber=" + idNumber + ", address=" + address + "]";
 	}
+
 
 }

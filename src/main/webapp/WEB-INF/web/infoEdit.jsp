@@ -7,29 +7,100 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 <title>个人中心</title>
+<link rel="shortcut icon" href="images/favicon.ico"/><!--加图标-->
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="../css/main.css" media="screen and (min-width:481px)">
 <link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
-<script src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript" src="../plugins/dialog.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		//在移动端添加菜单Menu
+		$(".logo").prepend('<button id="menutoggle">Menu</button>');
+		//上方图片点击回主页
+		$(".logo_left img").click(function(){
+			location.href="${base}/main/index.do";
+		})
+		//显示侧面菜单
+		$("#menutoggle").click(function(){
+			var nav_mid=$("#nav_mid");
+			if(nav_mid.css("opacity")==1){
+				nav_mid.addClass("fadeInLeft");
+				nav_mid.removeClass("fadeOutLeft");
+				$(".masklayer").css("display","none");
+				$("body").css("overflow","auto");
+			}else{
+				nav_mid.addClass("fadeOutLeft");
+				nav_mid.removeClass("fadeInLeft");
+				$(".masklayer").css("display","block");//弹出遮罩层
+				$("body").css("overflow","hidden");//禁止遮罩层下面滚动
+				$(".masklayer").click(function(){
+					nav_mid.addClass("fadeInLeft");
+					nav_mid.removeClass("fadeOutLeft");
+					$(".masklayer").css("display","none");
+					$("body").css("overflow","auto");
+				});
+			}
+		});
+		//个人中心
+		$(".user_mobile").click(function(){
+			var top_menu=$("#top");
+			if(top_menu.css("opacity")==1){
+				top_menu.addClass("fadeInRight");
+				top_menu.removeClass("fadeOutRight");
+				$(".masklayer").css("display","none");
+				$("body").css("overflow","auto");
+			}else{
+				top_menu.addClass("fadeOutRight");
+				top_menu.removeClass("fadeInRight");
+				$(".masklayer").css("display","block");//弹出遮罩层
+				$("body").css("overflow","hidden");//禁止遮罩层下面滚动
+				$(".masklayer").click(function(){
+					top_menu.addClass("fadeInRight");
+					top_menu.removeClass("fadeOutRight");
+					$(".masklayer").css("display","none");
+					$("body").css("overflow","auto");
+				});
+			}
+		});
+	});
+</script>
 </head>
 <body>
-<c:import url="header.jsp"></c:import>
-	<div class="table_all">
-		<div class="info_title">
-			<h3>个人信息<a class="info_title_txt" href="personal_info.php" title="点击预览">预览</a></h3>
+	<!--页面顶部top结束-->
+	<!--logo结束-->
+	<c:import url="header.jsp"></c:import>
+	  <!--nav结束-->
+	<div class="wrap bor">	
+	<div class="hengxian"><img src="../images/diying.jpg" width="100%" height="20px"></div><!--中间小横线-->
+	<div class="content">
+		<div class="content_l">
+			<div class="content_l_list">
+				<ul>
+					<div class="pic_bigtx">
+						<img width="178" height="178" src=""/>	
+						<a id="editTx" class="ghtx" href="javascript:;">更换头像</a>
+					</div>						
+					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
+					<li><a id="editmsg" href="${base}/user/infoEdit.do">修改信息<span>Services</span></a></li>
+					<li><a id="editpwd" href="javascript:;">修改密码<span>Knowledge</span></a></li>						
+					<li><a id="account" href="javascript:;">我的账户<span>Account</span></a></li>
+					<li><a id="pay" href="javascript:;">我的缴费<span>Pay</span></a></li>	
+				</ul>
+			</div>
 		</div>
-		<div class="basicinfo_table">
-			<table  cellspacing="0" cellpadding="0">
+		<div class="content_right">
+			<div class="info_preview">
+				<div class="info_title prev_title">
+					<h3>个人信息<a class="info_title_txt" href="javascript:;" title="点击修改">修改</a></h3>
+				</div>
+				<table  cellspacing="0" cellpadding="0">
 				<tr><td class="basicinfo_title">姓名：</td><td ><input type="text" name="u_name" id="u_name" class="txtinput" value="<?php echo $userInfo['u_name'] ?>" /></td></tr>
 				<tr><td class="basicinfo_title td_crossline">性别：</td>
 					<td class="td_crossline">
 						<select name="u_sex" id="u_sex" class="select_small">
-							<option value="1" <?php echo $userInfo['u_sex']=="男"?"selected='selected'":null; ?>>男</option>
-							<option value="2" <?php echo $userInfo['u_sex']=="女"?"selected='selected'":null; ?>>女</option>
 						</select>
 					</td>
 				</tr>
@@ -45,7 +116,6 @@
 					<td class="td_crossline">
 						<select name="u_xlzk" class="select_small" id="u_xlzk">
 							<?php foreach($xlzks as $xlzk): ?>
-							<option value="<?php echo $xlzk['id']; ?>" <?php echo $xlzk['id']==$userInfo['u_xlzk']?"selected='selected'":null; ?>><?php echo $xlzk['xlzk']; ?></option>
 							<?php endforeach; ?>
 						</select>
 					</td>
@@ -54,7 +124,6 @@
 					<td class="td_crossline">
 						<select name="u_hyzk" class="select_small" id="u_hyzk">
 							<?php foreach($hyzks as $hyzk): ?>
-							<option value="<?php echo $hyzk['id']; ?>" <?php echo $hyzk['id']==$userInfo['u_hyzk']?"selected='selected'":null; ?>><?php echo $hyzk['hyzk']; ?></option>
 							<?php endforeach; ?>
 						</select>
 					</td>
@@ -63,80 +132,22 @@
 					<td class="td_crossline"><input type="text" class="txtinput" name="u_phone" id="u_phone" value="<?php echo $userInfo['u_phone']; ?>"  /></td>
 				</tr>
 			</table>
-			<button id="btn_save" class="btn_save">保存</button>
-		</div><!--basicinfo_table结束-->	
-	</div><!--table_all-->	
-<script type="text/javascript">
-	var changeFlag=false;//标识文本框值是否改变，为true，标识已变
-	function changeFlagTrue(){
-		changeFlag=true;
-	}
-	$().ready(function(){
-		$("input[type='text']").change(function(){
-			changeFlagTrue()
-		});
-		$("select").change(function(){
-			changeFlagTrue()
-		});
-	
-		//保存按钮
-		$("#btn_save").click(function(){
-			changeFlag=false;//更新标识值
-			//过渡中的提示框
-		    var d1= dialog({
-				content:'<span class=\'save_start\'>正在保存您的信息。</span>'
-			});
-			$(document).ajaxStart(function(){
-				d1.show();					 
-			});
-			$.ajax({
-				type:"post",
-				url:"doUserAction.php?act=save&id=<?php echo $id ?>",
-				data:{
-					u_name:$("#u_name").val(),
-					u_sex:$("#u_sex").val(),
-					u_birth:$("#u_birth").val(),
-					u_mz:$("#u_mz").val(),
-					u_xlzk:$("#u_xlzk").val(),
-					u_hyzk:$("#u_hyzk").val(),
-					u_phone:$("#u_phone").val()
-				},
-				dataType:"json",
-				success:function(data){
-					if(data.success){
-						d1.close().remove();//关闭中间过度动画
-						var d= dialog({
-							content:'<span class=\'save_success\'>'+data.msg+'</span>',
-						});
-						d.show();
-						setTimeout(function(){
-							d.close().remove();
-						},2500);
-					}
-					else{
-						d1.close().remove();//关闭中间过度动画
-						var d= dialog({
-							content:'<span class=\'save_failed\'>'+data.msg+'</span>',
-							quickClose:true,//点击空白出快速关闭
-						});
-						d.show();
-						setTimeout(function(){
-							d.close().remove();
-						},3000);
-					}
-				},
-				error:function(jqXHR){
-					alert("发生错误:"+jqXHR.status);
-				},
-			});
-		});
-	});
-	//当页面刷新或者离开时，警告提示
-	window.onbeforeunload = function(event) {
-		if (changeFlag==true) {
-		    event.returnValue = "我在这写点东西...";
-		}
-	}
-</script>
+			</div>	<!--info_preview结束-->
+		</div><!--content_r结束-->	
+	</div>
+	<!--content结束-->
+	</div>
+	<!--wrap结束-->
+	<div class="footer">
+		<div class="footer_text">
+			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb">我的GitHub</a>
+			<span class="copyright fl">CopyRight © 2017 温州温医养老院 Design by <i>HeGuoFeng</i></span>
+			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号">浙ICP备17016736号</a>
+	 		<a class="zgwba fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100239" ><img src="" class="fl"/><p class="fl">浙公网安备 33078302100239号</p></a>
+		</div>
+	</div>
 </body>
+<div class="masklayer">  </div><!--遮罩层-->
+<script type="text/javascript" src="../js/content.js"></script>
+
 </html>

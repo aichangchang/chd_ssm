@@ -74,13 +74,13 @@
 	<c:import url="header.jsp"></c:import>
 	  <!--nav结束-->
 	<div class="wrap bor">	
-	<div class="hengxian"><img src="images/diying.jpg" width="100%" height="20px"></div><!--中间小横线-->
+	<div class="hengxian"><img src="../images/diying.jpg" width="100%" height="20px"></div><!--中间小横线-->
 	<div class="content">
 		<div class="content_l">
 			<div class="content_l_list">
 				<ul>
 					<div class="pic_bigtx">
-						<img width="178" height="178" src="upload/<?php echo $userInfo['u_photo']?$userInfo['u_photo']:'/sys/login_no.png'; ?>"/>	
+						<img width="178" height="178" src=""/>	
 						<a id="editTx" class="ghtx" href="javascript:;">更换头像</a>
 					</div>						
 					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
@@ -122,7 +122,7 @@
 			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb">我的GitHub</a>
 			<span class="copyright fl">CopyRight © 2017 温州温医养老院 Design by <i>HeGuoFeng</i></span>
 			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号">浙ICP备17016736号</a>
-	 		<a class="zgwba fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100239" ><img src="images/备案图标.png" class="fl"/><p class="fl">浙公网安备 33078302100239号</p></a>
+	 		<a class="zgwba fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100239" ><img src="" class="fl"/><p class="fl">浙公网安备 33078302100239号</p></a>
 		</div>
 	</div>
 </body>

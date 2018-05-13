@@ -50,16 +50,18 @@ public class UserController {
 	@ResponseBody
 	public ResponseResult<Void> handleRegister(@Validated UserDto userDto, BindingResult bindingResult,
 			HttpServletRequest request) {
-		String code = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+		String code =  request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY).toString().toLowerCase();
 		ResponseResult<Void> result = new ResponseResult<Void>();
 		if (bindingResult.hasErrors()) {
-			if (userDto.getSecurityCode().equals(code) && userDto.getPassword().equals(userDto.getConfirmPassword())) {
+			if (userDto.getSecurityCode().toLowerCase().equals(code) && userDto.getPassword().equals(userDto.getConfirmPassword())) {
 				userService.register(userDto.getUsername(), userDto.getPassword(), userDto.getEmail());
 				result.setCode(1);
 				result.setMessage("success");
+			}else {
+				result.setCode(-1);
+				result.setMessage("fail");
 			}
 		}
-		result.setMessage("error");
 		return result;
 	}
 
@@ -95,7 +97,9 @@ public class UserController {
 	}
 
 	@RequestMapping("/infoEdit.do")
-	public String infoEdit() {
+	public String infoEdit(HttpSession session,ModelMap modelMap) {
+		User user=userService.findUserByUsername((String) session.getAttribute("username"));
+		modelMap.addAttribute("user",user);
 		return "infoEdit";
 	}
 }

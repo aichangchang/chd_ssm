@@ -14,7 +14,6 @@
 				</li>	
 				<li class="top_content_nav">
 					<div id="pic_tx">
-						<img alt="我的头像" width="20" height="20" src=/>
 					</div>
 					<a class="user" href="javascript:;">${sessionScope.username}<i class="user_ico"></i></a>
 						<div class="userCard">
@@ -36,7 +35,7 @@
 	<!--页面顶部top结束-->
 	<div class="wrap_logo">
 		<div class="logo">
-				<div class="logo_left"><img src="../images/LOGO.jpg"/></div>
+				<div class="logo_left"><img src="../images/leftlogo.png"/></div>
 				<div class="logo_right"><img src="../images/tel.jpg" width="28" height="28" />24小时服务热线：<span class="tel">158-XXXX-XXXX</span></div>
 				<div class="user_mobile"><img src="../images/user_green.png"/></div>
 		</div>
