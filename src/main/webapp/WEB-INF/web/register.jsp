@@ -99,7 +99,7 @@ $().ready(function() {
 					if(obj.code==1){
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
-							content:'<span class=\'save_success\'>'+data.message+'</span>'
+							content:'<span class=\'save_success\'>'+obj.message+'</span>'
 						});
 						d.show();
 						setTimeout(function(){
@@ -110,7 +110,7 @@ $().ready(function() {
 					else{
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
-							content:'<span class=\'save_failed\'>'+data.message'</span>',
+							content:'<span class=\'save_failed\'>'+obj.message+'</span>',
 							quickClose:true,//点击空白出快速关闭
 						});
 						d.show();

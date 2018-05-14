@@ -8,13 +8,15 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-<title>个人中心</title>
+<title>修改信息</title>
 <link rel="shortcut icon" href="images/favicon.ico"/><!--加图标-->
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="../css/main.css" media="screen and (min-width:481px)">
 <link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../plugins/dialog.js"></script>
 <script type="text/javascript">
 	$().ready(function(){
 		//在移动端添加菜单Menu
@@ -94,44 +96,59 @@
 		<div class="content_right">
 			<div class="info_preview">
 				<div class="info_title prev_title">
-					<h3>个人信息<a class="info_title_txt" href="javascript:;" title="点击修改">修改</a></h3>
+					<h3>个人信息 <span class="change_username">更改用户名</span>修改</a></h3>
 				</div>
 				<table  cellspacing="0" cellpadding="0">
-				<tr><td class="basicinfo_title">姓名：</td><td ><input type="text" name="u_name" id="u_name" class="txtinput" value="<?php echo $userInfo['u_name'] ?>" /></td></tr>
+				<tr><td class="basicinfo_title">姓名：</td>
+				<td >
+				<span class="rs_username">${user.username}</span>
+				<input type="text" name="u_name" id="u_name" style="display: none;" class="txtinput"  />
+				</td>
+				</tr>
 				<tr><td class="basicinfo_title td_crossline">性别：</td>
 					<td class="td_crossline">
 						<select name="u_sex" id="u_sex" class="select_small">
+						 <option>男</option>  
+						 <option>女</option>
 						</select>
 					</td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">生日：</td>
 					<td class="td_crossline">
-						<input type="text" id="u_birth" class="birth" name="u_birth" value="<?php echo $userInfo['u_birth'] ?>" onclick="WdatePicker({onpicked:changeFlagTrue(),minDate: '1900-01-01',startDate:'1980-01-01' })">
+					<input type="text" id="u_birth" class="birth" name="u_birth" value="${user.birthday}" onclick="WdatePicker({onpicked:changeFlagTrue(),minDate: '1900-01-01',startDate:'1980-01-01' })"/>
 					</td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">民族：</td>
-					<td class="td_crossline"><input type="text" class="txtinput" name="u_mz" id="u_mz" value="<?php echo $userInfo['u_mz'] ?>"  /></td>
+					<td class="td_crossline"><input type="text" class="txtinput" name="u_mz" id="u_mz" value="${user.nation}"  /></td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">学历状况：</td>
 					<td class="td_crossline">
 						<select name="u_xlzk" class="select_small" id="u_xlzk">
-							<?php foreach($xlzks as $xlzk): ?>
-							<?php endforeach; ?>
+							<option value="小学">小学</option>
+							<option value="初中">初中</option>
+							<option value="高中">高中</option>
+							<option value="大专">大专</option>
+							<option value="本科">本科</option>
+							<option value="研究生">研究生</option>
+							<option value="博士">博士</option>
 						</select>
 					</td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">婚烟状况：</td>
 					<td class="td_crossline">
 						<select name="u_hyzk" class="select_small" id="u_hyzk">
-							<?php foreach($hyzks as $hyzk): ?>
-							<?php endforeach; ?>
+							<option value="未婚">未婚</option>
+							<option value="已婚">已婚</option>
+							<option value="离婚">离婚</option>
+							<option value="丧偶">丧偶</option>
 						</select>
 					</td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">手机号码：</td>
-					<td class="td_crossline"><input type="text" class="txtinput" name="u_phone" id="u_phone" value="<?php echo $userInfo['u_phone']; ?>"  /></td>
+					<td class="td_crossline"><input type="text" class="txtinput" name="u_phone" id="u_phone" value="${user.phone}"  /></td>
 				</tr>
 			</table>
+			<button id="btn_save" class="btn_save">保存</button>
 			</div>	<!--info_preview结束-->
 		</div><!--content_r结束-->	
 	</div>
@@ -149,5 +166,84 @@
 </body>
 <div class="masklayer">  </div><!--遮罩层-->
 <script type="text/javascript" src="../js/content.js"></script>
-
+<script type="text/javascript">
+$("#u_xlzk option[value='"+${user.education}+"']").removeAttr("selected");//根据值去除选中状态  
+$("#u_xlzk option[value='"+${user.education}+"']").attr("selected","selected");//根据值让option选中  
+$(".change_username").click(function(){
+	$(".rs_username").hide();
+	var name = $(".rs_username").html();
+	$(".txtinput").val(name);
+	$(".txtinput").show();
+})
+	var changeFlag=false;//标识文本框值是否改变，为true，标识已变
+	function changeFlagTrue(){
+		changeFlag=true;
+	}
+	$().ready(function(){
+		$("input[type='text']").change(function(){
+			changeFlagTrue()
+		});
+		$("select").change(function(){
+			changeFlagTrue()
+		});
+	
+		//保存按钮
+		$("#btn_save").click(function(){
+			changeFlag=false;//更新标识值
+			//过渡中的提示框
+		    var d1= dialog({
+				content:'<span class=\'save_start\'>正在保存您的信息。</span>'
+			});
+			$(document).ajaxStart(function(){
+				d1.show();					 
+			});
+			$.ajax({
+				type:"post",
+				url:"doUserAction.php?act=save&id=<?php echo $id ?>",
+				data:{
+					u_name:$("#u_name").val(),
+					u_sex:$("#u_sex").val(),
+					u_birth:$("#u_birth").val(),
+					u_mz:$("#u_mz").val(),
+					u_xlzk:$("#u_xlzk").val(),
+					u_hyzk:$("#u_hyzk").val(),
+					u_phone:$("#u_phone").val()
+				},
+				dataType:"json",
+				success:function(data){
+					if(data.success){
+						d1.close().remove();//关闭中间过度动画
+						var d= dialog({
+							content:'<span class=\'save_success\'>'+data.msg+'</span>',
+						});
+						d.show();
+						setTimeout(function(){
+							d.close().remove();
+						},2500);
+					}
+					else{
+						d1.close().remove();//关闭中间过度动画
+						var d= dialog({
+							content:'<span class=\'save_failed\'>'+data.msg+'</span>',
+							quickClose:true,//点击空白出快速关闭
+						});
+						d.show();
+						setTimeout(function(){
+							d.close().remove();
+						},3000);
+					}
+				},
+				error:function(jqXHR){
+					alert("发生错误:"+jqXHR.status);
+				},
+			});
+		});
+	});
+	//当页面刷新或者离开时，警告提示
+	window.onbeforeunload = function(event) {
+		if (changeFlag==true) {
+		    event.returnValue = "我在这写点东西...";
+		}
+	}
+</script>
 </html>
