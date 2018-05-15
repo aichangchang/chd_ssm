@@ -101,11 +101,11 @@
 				<table  cellspacing="0" cellpadding="0">
 				<tr><td class="basicinfo_title">姓名：</td>
 				<td >
-				<span class="rs_username">${user.username}</span>
-				<input type="text" name="u_name" id="u_name" style="display: none;" class="txtinput"  />
+				<span class="rs_username">${user.name}</span>
+				<input type="text" name="u_name" id="u_name" style="display: none;" class="txtinput" value="" />
 				</td>
 				</tr>
-				<tr><td class="basicinfo_title td_crossline">性别：</td>
+				<tr><td class="basicinfo_title td_crossline">性别:</td>
 					<td class="td_crossline">
 						<select name="u_sex" id="u_sex" class="select_small">
 						 <option>男</option>  
@@ -113,15 +113,15 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td class="basicinfo_title td_crossline">生日：</td>
+				<tr><td class="basicinfo_title td_crossline">出生日期:</td>
 					<td class="td_crossline">
 					<input type="text" id="u_birth" class="birth" name="u_birth" value="${user.birthday}" onclick="WdatePicker({onpicked:changeFlagTrue(),minDate: '1900-01-01',startDate:'1980-01-01' })"/>
 					</td>
 				</tr>
-				<tr><td class="basicinfo_title td_crossline">民族：</td>
-					<td class="td_crossline"><input type="text" class="txtinput" name="u_mz" id="u_mz" value="${user.nation}"  /></td>
+				<tr><td class="basicinfo_title td_crossline">身份证:</td>
+					<td class="td_crossline"><input type="text" class="txtinput" name="u_mz" id="u_mz" value="${user.idNumber}"/></td>
 				</tr>
-				<tr><td class="basicinfo_title td_crossline">学历状况：</td>
+				<tr><td class="basicinfo_title td_crossline">学历状况:</td>
 					<td class="td_crossline">
 						<select name="u_xlzk" class="select_small" id="u_xlzk">
 							<option value="小学">小学</option>
@@ -167,8 +167,8 @@
 <div class="masklayer">  </div><!--遮罩层-->
 <script type="text/javascript" src="../js/content.js"></script>
 <script type="text/javascript">
-$("#u_xlzk option[value='"+${user.education}+"']").removeAttr("selected");//根据值去除选中状态  
-$("#u_xlzk option[value='"+${user.education}+"']").attr("selected","selected");//根据值让option选中  
+$("#u_xlzk option[value='${user.education}']").removeAttr("selected");//根据值去除选中状态  
+$("#u_xlzk option[value='${user.education}']").attr("selected","selected");//根据值让option选中  
 $(".change_username").click(function(){
 	$(".rs_username").hide();
 	var name = $(".rs_username").html();
@@ -199,22 +199,21 @@ $(".change_username").click(function(){
 			});
 			$.ajax({
 				type:"post",
-				url:"doUserAction.php?act=save&id=<?php echo $id ?>",
+				url:"save.do",
 				data:{
-					u_name:$("#u_name").val(),
-					u_sex:$("#u_sex").val(),
-					u_birth:$("#u_birth").val(),
-					u_mz:$("#u_mz").val(),
-					u_xlzk:$("#u_xlzk").val(),
-					u_hyzk:$("#u_hyzk").val(),
-					u_phone:$("#u_phone").val()
+					name:$("#u_name").val(),
+					gender:$("#u_sex").val(),
+					nation:$("#u_mz").val(),
+					education:$("#u_xlzk").val(),
+					maritalStatus:$("#u_hyzk").val(),
+					phone:$("#u_phone").val()
 				},
 				dataType:"json",
 				success:function(data){
-					if(data.success){
+					if(data.code==1){
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
-							content:'<span class=\'save_success\'>'+data.msg+'</span>',
+							content:'<span class=\'save_success\'>'+data.message+'</span>',
 						});
 						d.show();
 						setTimeout(function(){
@@ -224,7 +223,7 @@ $(".change_username").click(function(){
 					else{
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
-							content:'<span class=\'save_failed\'>'+data.msg+'</span>',
+							content:'<span class=\'save_failed\'>'+data.message+'</span>',
 							quickClose:true,//点击空白出快速关闭
 						});
 						d.show();
@@ -234,6 +233,14 @@ $(".change_username").click(function(){
 					}
 				},
 				error:function(jqXHR){
+					console.log($("#u_birth").val())
+					console.log($("#u_name").val())
+					console.log($("#u_sex").val())
+					console.log($("#u_birth").val())
+					console.log($("#u_mz").val())
+					console.log($("#u_xlzk").val())
+					console.log($("#u_hyzk").val())			
+					console.log($("#u_phone").val())
 					alert("发生错误:"+jqXHR.status);
 				},
 			});

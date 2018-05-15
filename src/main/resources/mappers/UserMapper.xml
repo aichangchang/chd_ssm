@@ -12,4 +12,7 @@
 	<select id="findUserPasswordByUsername" resultType="cn.com.bean.User">
 			SELECT password From user WHERE username=#{username}
 	</select>
+	<update id="updateMessage" >
+		UPDATE user SET name=#{name},gender=#{gender},birthday=#{birthday},nation=#{nation},education=#{education},maritalStatus=#{maritalStatus},phone=#{phone} WHERE id=#{id}
+	</update>
 </mapper>

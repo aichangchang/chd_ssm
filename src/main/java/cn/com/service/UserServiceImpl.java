@@ -1,5 +1,7 @@
 package cn.com.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,10 @@ public class UserServiceImpl implements UserService {
 	public String findUserPasswordByUsername(String username) {
 		String password = userMapper.findUserPasswordByUsername(username);
 		return password;
+	}
+
+	public void updateMessage(String name, String gender, Date birthday, String nation, String education,
+			String maritalStatus, String phone,Integer id) {
+		 userMapper.updateMessage(name, gender, birthday, nation, education, maritalStatus, phone,id);
 	}
 }

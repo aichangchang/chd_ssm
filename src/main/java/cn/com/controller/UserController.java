@@ -1,5 +1,7 @@
 package cn.com.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -26,6 +28,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	ResponseResult<Void> result;
+	
 	@RequestMapping("/register.do")
 	public String register() {
 		return "register";
@@ -51,7 +55,7 @@ public class UserController {
 	public ResponseResult<Void> handleRegister(@Validated UserDto userDto, BindingResult bindingResult,
 			HttpServletRequest request) {
 		String code =  request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY).toString().toLowerCase();
-		ResponseResult<Void> result = new ResponseResult<Void>();
+	    result = new ResponseResult<Void>();
 		if (bindingResult.hasErrors()) {
 			if (userDto.getSecurityCode().toLowerCase().equals(code) && userDto.getPassword().equals(userDto.getConfirmPassword())) {
 				userService.register(userDto.getUsername(), userDto.getPassword(), userDto.getEmail());
@@ -69,7 +73,7 @@ public class UserController {
 	@ResponseBody
 	public ResponseResult<Void> handleLogin(@RequestParam("password") String password,
 			@RequestParam("username") String username, HttpSession session) {
-		ResponseResult<Void> result = new ResponseResult<Void>();
+		 result = new ResponseResult<Void>();
 		User user = userService.findUserByUsername(username);
 		if (user != null && password.equals(user.getPassword())) {
 			result.setCode(1);
@@ -101,5 +105,16 @@ public class UserController {
 		User user=userService.findUserByUsername((String) session.getAttribute("username"));
 		modelMap.addAttribute("user",user);
 		return "infoEdit";
+	}
+	@RequestMapping("/save.do")
+	@ResponseBody
+	public ResponseResult<Void> saveMessage(@RequestParam("name") String name, @RequestParam("gender") String gender, @RequestParam("nation") String nation,@RequestParam("education") String education,@RequestParam("maritalStatus") String maritalStatus,@RequestParam("phone") String phone,HttpSession session) {
+		result= new ResponseResult<Void>();
+		System.out.println(1);
+		Integer id = (Integer)session.getAttribute("uid");
+		userService.updateMessage(name, gender, nation, education, maritalStatus, phone,id);
+			result.setCode(1);
+			result.setMessage("sucess");
+		return result;
 	}
 }
