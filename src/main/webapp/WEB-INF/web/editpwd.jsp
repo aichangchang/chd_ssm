@@ -15,7 +15,38 @@
 <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="../css/main.css" media="screen and (min-width:481px)">
 <link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
+<style type="text/css">
+.table_all {
+	float :left;
+	margin-left: 200px;
+}
+.basicinfo_table1 td{
+	padding-bottom: 15px;
+}
+.basicinfo_table1 .txtinput{
+	height: 18px;
+	line-height: 18px;
+	width: 150px;
+	border: 1px solid #dadada;
+	padding: 2px;
+}
+.basicinfo_table1 .txtinput:hover{
+	border-color: #f5b937;
+}
+.basicinfo_table1 select:hover{
+	border-color: #228B22;
+}
+
+.basicinfo_title1{
+	width: 78px;
+	line-height: 21px;
+	padding-bottom: 15px;
+	vertical-align: top;
+	color: #444;
+}
+</style>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 <script type="text/javascript">
 	$().ready(function(){
 		//在移动端添加菜单Menu
@@ -86,34 +117,29 @@
 					</div>						
 					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
 					<li><a id="editmsg" href="${base}/user/infoEdit.do">修改信息<span>Services</span></a></li>
-					<li><a id="editpwd" href="${base}/user/infoEditPwd.do">修改密码<span>Knowledge</span></a></li>						
+					<li><a id="edit" href="${base}/user/infoEditPwd.do">修改密码<span>Knowledge</span></a></li>						
 					<li><a id="account" href="javascript:;">我的账户<span>Account</span></a></li>
 					<li><a id="pay" href="javascript:;">我的缴费<span>Pay</span></a></li>	
 				</ul>
 			</div>
 		</div>
-		<div class="content_right">
-			<div class="info_preview">
-				<div class="info_title prev_title">
-					<h3>个人信息</h3>
-				</div>
-				<div class="info_list">
-					<ul>
-						<li><label class="fl">姓名：</label><div class="info_val fl">${user.name}</div></li>
-						<li><label class="fl">性别：</label><div class="info_val fl">${user.gender}</div></li>
-						<li><label class="fl">生日：</label><div class="info_val fl"><f:formatDate value="${user.birthday}" pattern="yyyy-MM-dd"/></div></li>
-						<!-- <li><label class="fl">民族：</label><div class="info_val fl">${user.nation}</div></li>-->
-						<li><label class="fl">学历状况：</label><div class="info_val fl">${user.education}</div></li>
-						<li><label class="fl">婚烟状况：</label><div class="info_val fl">${user.maritalStatus}</div></li>
-						<!--<li><label class="fl">家庭人口：</label><div class="info_val fl">${user.children}</div></li>-->
-					 	<li><label class="fl">身份证号：</label><div class="info_val fl">${user.idNumber}</div></li>
-						<li><label class="fl">手机号码：</label><div class="info_val fl">${user.phone}</div></li>
-						<li><label class="fl">邮箱：</label><div class="info_val fl">${user.email}</div></li>
-						<!-- <li><label class="fl">家庭地址：</label><div class="info_val fl">${user.address}</div></li>-->
-					</ul>
-				</div><!--info_list结束-->
-			</div>	<!--info_preview结束-->
-		</div><!--content_r结束-->	
+	<div class="table_all">
+		<div class="info_title">
+			<h3>修改密码</h3>
+		</div>	
+			<div class="basicinfo_table1">
+				<form id="formP" name="formP" action="" method="post">	
+					<table  cellspacing="0" cellpadding="0">
+						<tr><td class="basicinfo_title">原密码：</td><td ><input type="password" name="u_pwd" id="u_pwd" class="txtinput"   /></td></tr>
+						<tr><td class="basicinfo_title">新密码：</td><td ><input type="password" name="u_newPwd" id="u_newPwd" class="txtinput"  /></td></tr>				
+						<tr><td class="basicinfo_title">确认密码：</td><td ><input type="password" name="u_conPwd" id="u_conPwd" class="txtinput" /></td></tr>
+					</table>
+				</form>
+				<button id="btn_editPwd" class="btn_save">修改</button>
+			</div><!--basicinfo_table结束-->	
+			<div><p id="createResult_red"></p></div>
+			<div><p id="createResult_green"></p></div>
+	</div><!--table_all-->		
 	</div>
 	<!--content结束-->
 	</div>
@@ -126,7 +152,81 @@
 	 		<a class="zgwba fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100239" ><img src="" class="fl"/><p class="fl">浙公网安备 33078302100239号</p></a>
 		</div>
 	</div>
+<script type="text/javascript">
+$().ready(function(){
+	$("#u_pwd").focus();
+	$("#btn_editPwd").click(function(){
+		var flag=$("#formP").valid();
+		if(flag){
+			$.ajax({
+				type:"post",
+				url:"doUserAction.php?act=editPwd&id=<?php echo $id ?>",
+				data:{
+					u_pwd:$("#u_pwd").val(),
+					u_newPwd:$("#u_newPwd").val(),
+				},
+				dataType:"json",
+				success:function(data){
+					if(data.success){
+						$("#createResult_green").html(data.msg);
+						$("#createResult_green").css("display","block");
+						$("#createResult_red").css("display","none");
+						setTimeout(function(){
+							$("#createResult_green").css("display","none");
+						},2000);
+					}else{
+						$("#createResult_red").html(data.msg);
+						$("#createResult_red").css("display","block");
+						$("#createResult_green").css("display","none");
+					}
+				},
+				error:function(jqXHR){
+					alert("发生错误"+jqXHR.status);
+				}
+			});
+		}
+	});
+	$("#formP").validate({
+		rules:{
+			u_pwd:{
+				required:true,
+				minlength:2,
+				maxlength:20
+			},
+			u_newPwd:{
+				required:true,
+				minlength:2,
+				maxlength:20
+			},
+			u_conPwd:{
+				required:true,
+				minlength:2,
+				maxlength:20,
+				equalTo:"#u_newPwd"
+			}
+		},
+		messages:{
+			u_pwd:{
+				required:'请输入密码',
+				minlength:"密码不能小于2个字符",
+				maxlength:"密码不能多于20个字符"
+			},
+			u_newPwd:{
+				required:'请输入新密码',
+				minlength:"新密码不能小于2个字符",
+				maxlength:"新密码不能多于20个字符"
+			},
+			u_conPwd:{
+				required:'请输入确认密码',
+				minlength:"密码不能小于2个字符",
+				maxlength:"密码不能多于20个字符",
+				equalTo:"两次输入密码不一致"
+			}
+		}
+	});
+	
+});
+</script>
 </body>
 <div class="masklayer">  </div><!--遮罩层-->
-<script type="text/javascript" src="../js/content.js"></script>
 </html>

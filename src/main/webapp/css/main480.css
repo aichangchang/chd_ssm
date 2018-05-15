@@ -1449,7 +1449,6 @@ input.error {
 }
 
 .btn_save {
-	display: block; 
 	width: 92px;
 	height: 26px;
 	padding: 0 7px;
@@ -1463,8 +1462,6 @@ input.error {
 .btn_save:hover {
 	background-color: #6c7d8e;
 }
-
-
 /*dialog提示框的样式*/
 .login_start{
 	height: 32px;

@@ -895,11 +895,8 @@ input.error {border: 1px solid red;}
 
 /*以下是修改信息页面*/
 /*表格内容*/
-.basicinfo_table{
-	margin: 20px 20px 20px 10px;
-}
-.basicinfo_table table{
-	width: 100%;
+.basicinfo_table {
+	padding-right: 505px;
 }
 .basicinfo_table td{
 	padding-bottom: 15px;
@@ -947,7 +944,6 @@ input.error {border: 1px solid red;}
 	padding-bottom: 15px;
 	vertical-align: top;
 	color: #444;
-
 }
 .td_crossline{
 	border-width: 1px 0 0;

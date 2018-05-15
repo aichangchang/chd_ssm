@@ -56,28 +56,12 @@ window.onload=function(){
 	});
 	$(document).ajaxStop(function(){
 		$(".load_img").css("display","none");
-	});
-	//左侧菜单按钮事件
-	btnClick("#charges","c_charges.php");
-	btnClick("#about","c_about.php?id=3");
-	btnClick("#services","c_about.php?id=4");
-	btnClick("#knowledge","c_knowledge.php?id=2");
-	btnClick("#professional","c_knowledge.php?id=1");
-	btnClick("#contact","c_contact.php");
+	});	
 	$("#environment").on('click',function(){
 		$(".content_right").css("display","none");
 		$(".content_right2").css("display","block");
 	});
 	
-	
-	/*个人信息页面的按钮*/
-	btnClick(".info_title_txt","infoEdit.php");
-	btnClick("#editmsg","infoEdit.php");
-	btnClick("#editpwd","infoEditPwd.php");	
-	btnClick("#editTx","infoEditTx.php");	
-	btnClick("#account","infoAccount.php");
-	btnClick("#pay","infoPay.php");
-
 //回到顶部
 $('#to_top').click(function(){
 		$('body,html').animate({scrollTop:0},500);

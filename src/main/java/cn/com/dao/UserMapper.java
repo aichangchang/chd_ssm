@@ -14,6 +14,6 @@ public interface UserMapper {
 	String findUserPasswordByUsername(@Param("username") String username);
 
 	void updateMessage(@Param("name") String name, @Param("gender") String gender,
-			@Param("birthday") Date birthday,@Param("nation") String nation,@Param("education") String education,@Param("maritalStatus") String maritalStatus,
-			@Param("phone") String phone,Integer id);
+			@Param("birthday") Date birthday,@Param("idNumber") String idNumber,@Param("education") String education,@Param("maritalStatus") String maritalStatus,
+			@Param("phone") String phone,@Param("id")Integer id);
 }

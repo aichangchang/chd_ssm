@@ -11,5 +11,5 @@ public interface UserService {
 
 	String findUserPasswordByUsername(String username);
 	
-	void updateMessage(String name,String gender,String nation,String education,String maritalStatus,String phone,Integer id);
+	void updateMessage(String name,String gender, Date birthday,String idNumber,String education,String maritalStatus,String phone,Integer id);
 }

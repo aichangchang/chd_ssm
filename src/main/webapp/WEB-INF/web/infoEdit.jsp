@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="f"  uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="base" 
   value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
@@ -69,6 +70,21 @@
 		});
 	});
 </script>
+<style type="text/css">
+	.change_username {
+	width: 92px;
+	height: 26px;
+	padding: 0 7px;
+	background-color: #7b8c9e;
+	border: 1px solid #6d7c8c;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
+.change_username:hover {
+	background-color: #6c7d8e;
+}
+</style>
 </head>
 <body>
 	<!--页面顶部top结束-->
@@ -87,7 +103,7 @@
 					</div>						
 					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
 					<li><a id="editmsg" href="${base}/user/infoEdit.do">修改信息<span>Services</span></a></li>
-					<li><a id="editpwd" href="javascript:;">修改密码<span>Knowledge</span></a></li>						
+					<li><a id="editpwd" href="${base}/user/infoEditPwd.do">修改密码<span>Knowledge</span></a></li>						
 					<li><a id="account" href="javascript:;">我的账户<span>Account</span></a></li>
 					<li><a id="pay" href="javascript:;">我的缴费<span>Pay</span></a></li>	
 				</ul>
@@ -96,7 +112,7 @@
 		<div class="content_right">
 			<div class="info_preview">
 				<div class="info_title prev_title">
-					<h3>个人信息 <span class="change_username">更改用户名</span>修改</a></h3>
+					<h3>个人信息 </h3>
 				</div>
 				<table  cellspacing="0" cellpadding="0">
 				<tr><td class="basicinfo_title">姓名：</td>
@@ -115,11 +131,14 @@
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">出生日期:</td>
 					<td class="td_crossline">
-					<input type="text" id="u_birth" class="birth" name="u_birth" value="${user.birthday}" onclick="WdatePicker({onpicked:changeFlagTrue(),minDate: '1900-01-01',startDate:'1980-01-01' })"/>
+					<f:formatDate var="date" value="${user.birthday}" pattern="yyyy-MM-dd"/>
+					<input type="text" id="u_birth" class="birth" name="u_birth" value="${date}" onclick="WdatePicker({onpicked:changeFlagTrue(),minDate: '1900-01-01',startDate:'1980-01-01' })"/>
 					</td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">身份证:</td>
-					<td class="td_crossline"><input type="text" class="txtinput" name="u_mz" id="u_mz" value="${user.idNumber}"/></td>
+					<td class="td_crossline">
+					<span class="rs_username">${user.idNumber}</span>
+					<input type="text" class="txtinput" name="u_mz" id="u_mz" style="display: none;" value=""/></td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">学历状况:</td>
 					<td class="td_crossline">
@@ -148,7 +167,10 @@
 					<td class="td_crossline"><input type="text" class="txtinput" name="u_phone" id="u_phone" value="${user.phone}"  /></td>
 				</tr>
 			</table>
+			<div>
+			<button id="change_username" class="change_username">更改</button>
 			<button id="btn_save" class="btn_save">保存</button>
+			</div>
 			</div>	<!--info_preview结束-->
 		</div><!--content_r结束-->	
 	</div>
@@ -165,7 +187,6 @@
 	</div>
 </body>
 <div class="masklayer">  </div><!--遮罩层-->
-<script type="text/javascript" src="../js/content.js"></script>
 <script type="text/javascript">
 $("#u_xlzk option[value='${user.education}']").removeAttr("selected");//根据值去除选中状态  
 $("#u_xlzk option[value='${user.education}']").attr("selected","selected");//根据值让option选中  
@@ -203,7 +224,8 @@ $(".change_username").click(function(){
 				data:{
 					name:$("#u_name").val(),
 					gender:$("#u_sex").val(),
-					nation:$("#u_mz").val(),
+					birthday:$("#u_birth").val(),
+					idNumber:$("#u_mz").val(),
 					education:$("#u_xlzk").val(),
 					maritalStatus:$("#u_hyzk").val(),
 					phone:$("#u_phone").val()
@@ -253,4 +275,5 @@ $(".change_username").click(function(){
 		}
 	}
 </script>
+<script type="text/javascript" src="../js/content.js"></script>
 </html>

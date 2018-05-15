@@ -27,8 +27,10 @@ public class UserServiceImpl implements UserService {
 		return password;
 	}
 
-	public void updateMessage(String name, String gender, Date birthday, String nation, String education,
+	public void updateMessage(String name, String gender, Date birthday, String idNumber,  String education,
 			String maritalStatus, String phone,Integer id) {
-		 userMapper.updateMessage(name, gender, birthday, nation, education, maritalStatus, phone,id);
+		 userMapper.updateMessage(name, gender, birthday, idNumber, education, maritalStatus, phone,id);
 	}
+
+	
 }

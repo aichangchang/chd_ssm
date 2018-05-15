@@ -4,15 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.com.dao.UserMapper">
 	<select id="findUserByUsername" resultType="cn.com.bean.User">
-		SELECT * FROM user WHERE username=#{username}
+		SELECT
+		id,
+		username,
+		name,
+		password,
+		gender,
+		age,
+		birthday,
+		nation,
+		education,
+		marital_status maritalStatus,
+		phone,
+		email,
+		id_number	idNumber,
+		address,
+		children,
+		case_history caseHistory
+		FROM user WHERE username=#{username}
 	</select>
 	<insert id="saveUser">
-		INSERT INTO user (username,password,email) values(#{username},#{password},#{email})
+		INSERT INTO user (username,password,email)
+		values(#{username},#{password},#{email})
 	</insert>
-	<select id="findUserPasswordByUsername" resultType="cn.com.bean.User">
-			SELECT password From user WHERE username=#{username}
+	<select id="findUserPasswordByUsername"
+		resultType="cn.com.bean.User">
+		SELECT password From user WHERE username=#{username}
 	</select>
-	<update id="updateMessage" >
-		UPDATE user SET name=#{name},gender=#{gender},birthday=#{birthday},nation=#{nation},education=#{education},maritalStatus=#{maritalStatus},phone=#{phone} WHERE id=#{id}
+	<update id="updateMessage">
+		UPDATE user SET
+		name=#{name},gender=#{gender},birthday=#{birthday},id_number=#{idNumber},education=#{education},marital_status=#{maritalStatus},phone=#{phone}
+		WHERE id=#{id}
 	</update>
 </mapper>
