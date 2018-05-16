@@ -108,13 +108,7 @@ $(document).ready(function(){
 		</div>
 	</div>	
 	<!--页面顶部top结束-->
-	<div class="wrap_logo">
-	<div class="logo">
-			<div class="logo_left"><a href="#"><img src="../images/logo.gif"/></a> </div>
-			<div class="logo_right"><img src="../images/tel.jpg" width="28" height="28" />24小时服务热线：<span class="tel">158-8827-4549</span></div>
-			<div class="user_mobile"><img src="../images/user_green.png"/></div>
-	</div>
-	</div>
+
 	<!-- header -->
 	<c:import url="header.jsp"></c:import>
 	 <div class="wrap">
@@ -145,7 +139,6 @@ $(document).ready(function(){
 				<c:out value="${news.content}"></c:out>	
 			</div>
 		</div><!--content_right结束-->
-		<iframe class="content_right2" src="c_environment.php" frameborder="0" width="" height=""></iframe>
 	</div><!--content结束-->
 	</div><!--wrap结束-->
 	<a id="to_top" href="javascript:;" title="回到顶部"></a>

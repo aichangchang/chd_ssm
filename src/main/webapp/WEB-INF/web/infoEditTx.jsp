@@ -8,9 +8,9 @@
 <head>
 <meta charset="UTF-8"/>
 <title>个人中心</title>
-<link rel="stylesheet" type="text/css" href="css/reset.css"/>
-<link rel="stylesheet" type="text/css" href="css/main.css"/>
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" type="../text/css" href="../css/reset.css"/>
+<link rel="stylesheet" type="../text/css" href="../css/main.css"/>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
 <style>
 	#rfFrame{
 		border: 0;
@@ -32,9 +32,7 @@
 				　<iframe id="rfFrame" name="rfFrame" src="about:blank" >
 				</iframe> 	
 			</div><!--basicinfo_table结束-->	
-			
 	</div><!--table_all-->		
-			
 <script type="text/javascript">
 $().ready(function(){
 	$("#formP").attr("target","rfFrame");

@@ -6,7 +6,7 @@
   	<div class="top" id="top">
 		<div class="top_content">
 			<div class="top_content_l">
-				<a href="admin/index.php" target="_blank" title="进入后台管理系统" class="backstage">进入后台管理系统</a>
+				<a href="${base}/admin/index.do" target="_blank" title="进入后台管理系统" class="backstage">进入后台管理系统</a>
 			</div>
 			<ul class="top_content_user">
 				<li>

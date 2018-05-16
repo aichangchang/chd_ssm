@@ -77,21 +77,7 @@
 	<div class="wrap bor">	
 	<div class="hengxian"><img src="../images/diying.jpg" width="100%" height="20px"></div><!--中间小横线-->
 	<div class="content">
-		<div class="content_l">
-			<div class="content_l_list">
-				<ul>
-					<div class="pic_bigtx">
-						<img width="178" height="178" src=""/>	
-						<a id="editTx" class="ghtx" href="javascript:;">更换头像</a>
-					</div>						
-					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
-					<li><a id="editmsg" href="${base}/user/infoEdit.do">修改信息<span>Services</span></a></li>
-					<li><a id="editpwd" href="${base}/user/editpwd.do">修改密码<span>Knowledge</span></a></li>						
-					<li><a id="account" href="javascript:;">我的账户<span>Account</span></a></li>
-					<li><a id="pay" href="javascript:;">我的缴费<span>Pay</span></a></li>	
-				</ul>
-			</div>
-		</div>
+	<c:import url="informationEdit.jsp"></c:import>
 		<div class="content_right">
 			<div class="info_preview">
 				<div class="info_title prev_title">
@@ -118,14 +104,7 @@
 	<!--content结束-->
 	</div>
 	<!--wrap结束-->
-	<div class="footer">
-		<div class="footer_text">
-			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb">我的GitHub</a>
-			<span class="copyright fl">CopyRight © 2017 温州温医养老院 Design by <i>HeGuoFeng</i></span>
-			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号">浙ICP备17016736号</a>
-	 		<a class="zgwba fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100239" ><img src="" class="fl"/><p class="fl">浙公网安备 33078302100239号</p></a>
-		</div>
-	</div>
+
 </body>
 <div class="masklayer">  </div><!--遮罩层-->
 <script type="text/javascript" src="../js/content.js"></script>

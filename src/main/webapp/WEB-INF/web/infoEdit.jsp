@@ -94,21 +94,7 @@
 	<div class="wrap bor">	
 	<div class="hengxian"><img src="../images/diying.jpg" width="100%" height="20px"></div><!--中间小横线-->
 	<div class="content">
-		<div class="content_l">
-			<div class="content_l_list">
-				<ul>
-					<div class="pic_bigtx">
-						<img width="178" height="178" src=""/>	
-						<a id="editTx" class="ghtx" href="javascript:;">更换头像</a>
-					</div>						
-					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
-					<li><a id="editmsg" href="${base}/user/infoEdit.do">修改信息<span>Services</span></a></li>
-					<li><a id="editpwd" href="${base}/user/editpwd.do">修改密码<span>Knowledge</span></a></li>						
-					<li><a id="account" href="javascript:;">我的账户<span>Account</span></a></li>
-					<li><a id="pay" href="javascript:;">我的缴费<span>Pay</span></a></li>	
-				</ul>
-			</div>
-		</div>
+	<c:import url="informationEdit.jsp"></c:import>
 		<div class="content_right">
 			<div class="info_preview">
 				<div class="info_title prev_title">
@@ -137,8 +123,8 @@
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">身份证:</td>
 					<td class="td_crossline">
-					<span class="rs_username">${user.idNumber}</span>
-					<input type="text" class="txtinput" name="u_mz" id="u_mz" style="display: none;" value=""/></td>
+					<span class="rs_idNumber">${user.idNumber}</span>
+					<input type="text" class="txtinputidNumber" name="u_mz" id="u_mz" style="display: none;" value=""/></td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">学历状况:</td>
 					<td class="td_crossline">
@@ -164,7 +150,10 @@
 					</td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">手机号码：</td>
-					<td class="td_crossline"><input type="text" class="txtinput" name="u_phone" id="u_phone" value="${user.phone}"  /></td>
+					
+					<td class="td_crossline">
+					<span class="re_phone">${user.phone}</span>
+					<input type="text" class="txtinputphone" style="display:none;"  name="u_phone" id="u_phone" value=""  /></td>
 				</tr>
 			</table>
 			<div>
@@ -177,14 +166,6 @@
 	<!--content结束-->
 	</div>
 	<!--wrap结束-->
-	<div class="footer">
-		<div class="footer_text">
-			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb">我的GitHub</a>
-			<span class="copyright fl">CopyRight © 2017 温州温医养老院 Design by <i>HeGuoFeng</i></span>
-			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号">浙ICP备17016736号</a>
-	 		<a class="zgwba fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100239" ><img src="" class="fl"/><p class="fl">浙公网安备 33078302100239号</p></a>
-		</div>
-	</div>
 </body>
 <div class="masklayer">  </div><!--遮罩层-->
 <script type="text/javascript">
@@ -192,9 +173,17 @@ $("#u_xlzk option[value='${user.education}']").removeAttr("selected");//根据�
 $("#u_xlzk option[value='${user.education}']").attr("selected","selected");//根据值让option选中  
 $(".change_username").click(function(){
 	$(".rs_username").hide();
+	$(".rs_idNumber").hide();
+	$(".re_phone").hide();
 	var name = $(".rs_username").html();
+	var idNumber=$(".rs_idNumber").html();
+	var phone=$(".re_phone").html();
 	$(".txtinput").val(name);
 	$(".txtinput").show();
+	$(".txtinputphone").val(phone);
+	$(".txtinputphone").show();
+	$(".txtinputidNumber").val(idNumber);
+	$(".txtinputidNumber").show();
 })
 	var changeFlag=false;//标识文本框值是否改变，为true，标识已变
 	function changeFlagTrue(){

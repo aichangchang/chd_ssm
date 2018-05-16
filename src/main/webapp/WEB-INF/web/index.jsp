@@ -14,7 +14,6 @@
 <title>福利儿童院</title>
 <link rel="shortcut icon" href=""/><!--加图标-->
 <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
-
 <link rel="stylesheet" type="text/css" href="../css/main.css"/ media="screen and (min-width:481px)">
 <link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
 <link rel="stylesheet" type="text/css" href="../plugins/jquery.bxslider/jquery.bxslider.css"/>

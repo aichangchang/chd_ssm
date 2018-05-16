@@ -30,5 +30,21 @@
     	<property name="prefix" value="/WEB-INF/web/"></property>
     	<property name="suffix" value=".jsp"></property>
     </bean>
-    
+<!--     <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+    		<mvc:exclude-mapping path="/main/index.do"/>
+    		<mvc:exclude-mapping path="/user/login.do"/>
+    		<mvc:exclude-mapping path="/user/register.do"/>
+    		<mvc:exclude-mapping path="/user/handleRegister.do"/>
+    		<mvc:exclude-mapping path="/user/handleLogin.do"/>
+    		<mvc:exclude-mapping path="/user/registerCheckUsername.do"/>
+    		<mvc:exclude-mapping path="/user/loginOut.do"/>
+    		<mvc:exclude-mapping path="/user/infoEdit.do"/>
+    		<mvc:exclude-mapping path="/user/save.do"/>
+    		<mvc:exclude-mapping path="/user/editpwd.do"/>
+    		<mvc:exclude-mapping path="/user/infoEditPwd.do"/>
+    		<bean class="cn.com.interceptor.LoginInterceptor" />
+    	</mvc:interceptor>
+    </mvc:interceptors> -->
 </beans>
