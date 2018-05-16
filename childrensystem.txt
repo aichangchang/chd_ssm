@@ -24,19 +24,20 @@ insert into newsCategory values(2,'本院要闻');
 insert into newsCategory values(3,'本院介绍');         
 create table user(
       id int  auto_increment primary key,
-	  username varchar(20) ,
+	  username varchar(20),
 	  password varchar(20),
 	  name varchar(20),
 	  gender varchar(2),
+          age int,
 	  birthday datetime,
-	  nation varchar(20) ,
+	  nation varchar(20),
 	  education varchar(10),
 	  marital_status varchar(10),
 	  phone varchar(20),
 	  email varchar(50),
 	  id_number varchar(30),
 	  address  varchar(100),
-	  children varchar(10)
+	  children varchar(10),
 	  case_history varchar(10)
 	  );
 

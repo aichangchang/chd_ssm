@@ -27,13 +27,16 @@
 		INSERT INTO user (username,password,email)
 		values(#{username},#{password},#{email})
 	</insert>
-	<select id="findUserPasswordByUsername"
-		resultType="cn.com.bean.User">
-		SELECT password From user WHERE username=#{username}
+	<select id="findUserPasswordByUsername" resultType="java.lang.String">
+		SELECT  password  From  user WHERE username=#{username}
 	</select>
 	<update id="updateMessage">
 		UPDATE user SET
 		name=#{name},gender=#{gender},birthday=#{birthday},id_number=#{idNumber},education=#{education},marital_status=#{maritalStatus},phone=#{phone}
 		WHERE id=#{id}
+	</update>
+	<update id="updatePassword">
+	    UPDATE user SET
+	    password=#{password} WHERE username=#{username}
 	</update>
 </mapper>

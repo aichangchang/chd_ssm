@@ -117,7 +117,7 @@
 					</div>						
 					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
 					<li><a id="editmsg" href="${base}/user/infoEdit.do">修改信息<span>Services</span></a></li>
-					<li><a id="edit" href="${base}/user/infoEditPwd.do">修改密码<span>Knowledge</span></a></li>						
+					<li><a id="edit" href="${base}/user/editpwd.do">修改密码<span>Knowledge</span></a></li>						
 					<li><a id="account" href="javascript:;">我的账户<span>Account</span></a></li>
 					<li><a id="pay" href="javascript:;">我的缴费<span>Pay</span></a></li>	
 				</ul>
@@ -160,22 +160,24 @@ $().ready(function(){
 		if(flag){
 			$.ajax({
 				type:"post",
-				url:"doUserAction.php?act=editPwd&id=<?php echo $id ?>",
+				url:"infoEditPwd.do",
 				data:{
-					u_pwd:$("#u_pwd").val(),
-					u_newPwd:$("#u_newPwd").val(),
+					password:$("#u_pwd").val(),
+					newPassword:$("#u_newPwd").val(),
+					conformPassword:$("#u_conPwd").val()
 				},
 				dataType:"json",
 				success:function(data){
-					if(data.success){
-						$("#createResult_green").html(data.msg);
+					if(data.code==1){
+						$("#createResult_green").html(data.message);
 						$("#createResult_green").css("display","block");
 						$("#createResult_red").css("display","none");
 						setTimeout(function(){
 							$("#createResult_green").css("display","none");
+							window.location='${base}/user/login.do';
 						},2000);
 					}else{
-						$("#createResult_red").html(data.msg);
+						$("#createResult_red").html(data.message);
 						$("#createResult_red").css("display","block");
 						$("#createResult_green").css("display","none");
 					}

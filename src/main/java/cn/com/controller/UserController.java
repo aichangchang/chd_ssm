@@ -126,10 +126,28 @@ public class UserController {
 		result.setMessage("sucess");
 		return result;
 	}
-	@RequestMapping("/infoEditPwd.do")
-	public String infoEditPwd() {
-		System.out.println(1);
+	@RequestMapping("/editpwd.do")
+	public String editPassword() {
 		return "editpwd";
+	}
+	
+	@RequestMapping("/infoEditPwd.do")
+	@ResponseBody
+	public ResponseResult<Void>  infoEditPwd(@RequestParam("password") String password , @RequestParam("newPassword") String newPassword,@RequestParam("conformPassword")String conformPassword,HttpSession session) {
+	String username=(String)session.getAttribute("username");
+	String 	queryPassword =	userService.findUserPasswordByUsername((String)session.getAttribute("username"));
+	
+	result=new ResponseResult<Void>();
+	if (queryPassword.equals(password)&&newPassword.equals(conformPassword)) {
+		userService.updatePssword(newPassword,username);
+		     result.setCode(1);
+		     result.setMessage("success");
+		     session.invalidate();
+		}else {
+			result.setCode(-1);
+			result.setMessage("fail");
+		}
+		return result;
 	}
 	
 }

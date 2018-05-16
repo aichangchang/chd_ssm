@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.sym.Name;
+
 import cn.com.bean.User;
 import cn.com.dao.UserMapper;
 
@@ -30,6 +32,10 @@ public class UserServiceImpl implements UserService {
 	public void updateMessage(String name, String gender, Date birthday, String idNumber,  String education,
 			String maritalStatus, String phone,Integer id) {
 		 userMapper.updateMessage(name, gender, birthday, idNumber, education, maritalStatus, phone,id);
+	}
+
+	public void updatePssword(String password,String username) {
+		userMapper.updatePassword(password,username);
 	}
 
 	

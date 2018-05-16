@@ -103,7 +103,7 @@
 					</div>						
 					<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About Us</span></a></li>
 					<li><a id="editmsg" href="${base}/user/infoEdit.do">修改信息<span>Services</span></a></li>
-					<li><a id="editpwd" href="${base}/user/infoEditPwd.do">修改密码<span>Knowledge</span></a></li>						
+					<li><a id="editpwd" href="${base}/user/editpwd.do">修改密码<span>Knowledge</span></a></li>						
 					<li><a id="account" href="javascript:;">我的账户<span>Account</span></a></li>
 					<li><a id="pay" href="javascript:;">我的缴费<span>Pay</span></a></li>	
 				</ul>
