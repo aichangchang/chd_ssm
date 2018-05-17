@@ -55,4 +55,9 @@ public class ResponseResult<T> {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		return "ResponseResult [code=" + code + ", message=" + message + ", data=" + data + "]";
+	}
+
 }

@@ -40,21 +40,42 @@ create table user(
 	  family int,
 	  photo varchar(100),
 	  case_history varchar(10),
+	  assess text,	
 	  children_id int
 	 );
 
-create table employee(
-      id int auto_increment primary key,
-      name varchar(20) not null,
-      password varchar(20) not null,
-      gender varchar(2) not null,	
-      phone varchar(20),
-      email varchar(50),
-      id_number varchar(30),
-      address  varchar(100),
-      department_id int not null,
-      foreign key (department_id ) references department(id));
+	create table employee(
+		  id int auto_increment primary key,
+		  username varchar(20),
+		  name varchar(20),
+		  password varchar(20),
+		  gender varchar(2),
+		  age int,
+		  salary int,
+		  phone varchar(20),
+		  email varchar(50),
+		  isJob int,
+		  department_id int,
+		  foreign key (department_id ) references department(id));
 	  
+create  table department(
+      id int auto_increment primary key,
+      d_name varchar(20)
+);
+
+create  table leavenote(
+      id int auto_increnment primary key,
+	  employee_id int,
+      username varchar(20),
+	  name varchar(20),
+	  startTime datetime,
+	  finishTime datetime,
+	  reason text,
+	  status varchar(20),
+	  pass varchar(10)
+	  )£»	
+
+); 
 create table children(
       id int auto_increment primary key,
       number int,
@@ -66,9 +87,4 @@ create table children(
       id_number varchar(30),
       address  varchar(100),
       message text
-);
-create  table department(
-      id int auto_increnment primary key,
-      d_name varchar(20) not null,	
-
 );

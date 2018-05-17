@@ -16,7 +16,7 @@
 		<a href="../index.php" target="_blank" title="官方首页">
 			<div class="logo fl"></div>
 		</a>
-		<h3 class="head_text fr">温医养老院后台管理系统</h3>
+		<h3 class="head_text fr">某孤儿院后台管理系统</h3>
 	</div>
 	<div class="top_user clearfix">
 		<div class="link fl">
@@ -25,12 +25,9 @@
 		<div class="link fr">
 			<p>欢迎您&nbsp;</p>
 			<a href="#">
-				<div id="pic_tx" >		
-		        	<img alt="我的头像" width="20" height="20" src="../admin/uploads/<?php echo $row['photo']; ?>"/>&nbsp;
-		        </div>	
-				<b><?php echo $row['name'];?> </b>
+				<b>${sessionScope.adminname}</b>
 			</a>&nbsp;&nbsp;&nbsp;
-			<a href="main.php" target="mainFrame" class="icon icon_i">
+			<a href="main.do" target="mainFrame" class="icon icon_i">
 				首页
 			</a><span></span>
 			<a href="javascript:;" class="icon icon_j" id="goforward">
@@ -51,7 +48,7 @@
 		<div class="main">
 			<div class="cont">
 				<!--嵌套网页开始-->
-				<iframe src="main.php" frameborder="0" name="mainFrame" width="100%" height="792px"></iframe>
+				<iframe src="main.do" frameborder="0" name="mainFrame" width="100%" height="792px"></iframe>
 				<!--嵌套网页结束-->
 			</div>
 			<!--右侧内容结束-->
@@ -67,16 +64,15 @@
 						<h3><span>+</span>新闻管理</h3>
 						<ul class="menu_item_child none">
 							<li>
-								<a href="addArticle.php" target="mainFrame">
+								<a href="addArticle.do" target="mainFrame">
 									发布文章
 								</a>
 							</li>
 							<li>
-								<a href="listArticle.php" target="mainFrame">
+								<a href="listArticle.do" target="mainFrame">
 									文章列表
 								</a>
 							</li>
-
 						</ul>
 					</li>
 					<li class="menu_item" style="display: <?php echo $row['isAdmin']=='0'?'none':'block'; ?>;">
@@ -139,16 +135,16 @@
 						</ul>
 					</li>
 					<li class="menu_item">
-						<h3><span>+</span>老人管理</h3>
+						<h3><span>+</span>用户管理</h3>
 						<ul class="menu_item_child none">
 							<li>
 								<a href="listUsers.php" target="mainFrame">
-									老人列表
+									用户列表
 								</a>
 							</li>	
 							<li>
 								<a href="addUsers.php" target="mainFrame">
-									添加新用户
+									添加用户
 								</a>
 							</li>					
 						</ul>
@@ -207,9 +203,9 @@
 	<!--content结束-->
 	<div class="footer">
 		<div class="footer_text">
-			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb">我的GitHub</a>
-			<span class="copyright fl">CopyRight © 2017 温州温医养老院 Design by <i>HeGuoFeng</i></span>
-			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号">浙ICP备17016736号</a>
+			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb"></a>
+			<span class="copyright fl">CopyRight © 2018 某孤儿院领养双系统  Design by <i>魏畅</i></span>
+			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号"></a>
 	 		<a class="zgwba fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100239" ><img src="../images/备案图标.png" class="fl"/><p class="fl">浙公网安备 33078302100239号</p></a>
 		</div>
 	</div>

@@ -14,4 +14,7 @@
 		WHERE
 		id=#{id}
 	</select>
+	<select id="listNewsCategoryName" resultType="cn.com.bean.NewsCategory">
+		SELECT * FROM newscategory
+	</select>
 </mapper>
