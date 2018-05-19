@@ -1,4 +1,3 @@
-
 window.onload=function(){	
 /*导航条固定位置*/
 //在窗口大小变化时更新
@@ -42,11 +41,11 @@ window.onload=function(){
 		});
 	
 	//封装一个ajax异步更新按钮事件			
-	function btnClick(btn,newhtml){
-		$(btn).on("click",function(){
+ function btnClick(btn,newhtml){
+	$(btn).on("click",function(){
 			$(".content_right").css("display","block");
 			$(".content_right2").css("display","none");
-			$(".content_right").html("<div class=\"load_img\"> <img src=\"images\/loading2.gif\"/> </div>");//过度动画
+			$(".content_right").html("<div class=\"load_img\"> <img src=\"..\/images\/loading2.gif\"/> </div>");//过度动画
 			$(".content_right").load(newhtml);
 		});
 	}
@@ -64,10 +63,10 @@ window.onload=function(){
 	//左侧菜单按钮事件
 	btnClick("#charges","c_charges.php");
 	btnClick("#about","nav_about.do?id=3");
-	btnClick("#services","c_about.php?id=4");
+	btnClick("#services","nav_about.do?id=4");
 	btnClick("#knowledge","c_knowledge.php?id=2");
-	btnClick("#professional","c_knowledge.php?id=1");
-	btnClick("#contact","c_contact.php");
+	btnClick("#professional","nav_about.do?id=5");
+	btnClick("#contact","nav_about.do?id=13");
 	$("#environment").on('click',function(){
 		$(".content_right").css("display","none");
 		$(".content_right2").css("display","block");

@@ -48,9 +48,9 @@
 					<li><a href="${base}/main/nav_about.do?id=12">环境设施</a></li>
 					<li><a href="${base}/main/nav_about.do?id=1">孤儿救助</a></li>
 					<li><a href="${base}/main/nav_about.do?id=4">孤儿助养</a></li>
-					<li><a href="">XXXX</a></li>
 					<li><a href="${base}/main/nav_about.do?id=5">法律法规</a></li>
 					<li><a href="${base}/user/personal_info.do">个人中心</a></li>
+					<li><a href="${base}/main/nav_about.do?id=13">联系我们</a></li>
 				</ul>
 	</div>
 </div>

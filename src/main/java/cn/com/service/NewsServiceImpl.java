@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.com.bean.EditNews;
 import cn.com.bean.News;
 import cn.com.bean.NewsCategory;
 import cn.com.dao.NewsMapper;
@@ -40,6 +41,19 @@ public class NewsServiceImpl implements NewsService {
 
 	public List<News> listNewsByCategoryId(Integer categoryId) {
 		return newsMapper.listNewsByCategoryId(categoryId);
+	}
+
+	public void deleteNews(Integer id) {
+		newsMapper.deleteNews(id);
+	}
+
+	public EditNews editNews(Integer id) {
+	EditNews editNews=newsMapper.editNews(id);
+		return editNews;
+	}
+
+	public void updateArticle(Integer id, String title, String author, String content) {
+		newsMapper.updateArticle(id, title, author, content);
 	}
 
 }

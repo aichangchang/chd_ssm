@@ -53,7 +53,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach begin="0" end="3"  items="${listNews}"  var="allNews">
+                        <c:forEach begin="0" step="1"  items="${newsList}"  var="allNews">
                             <tr>
                                 <td><label class="label_id"><c:out value="${allNews.id}"></c:out></label></td>
                                 <td>${allNews.categoryId}</td>
@@ -64,20 +64,22 @@
                          </c:forEach>                       
                         </tbody>
                     </table>
-                    <input type="button" value="上一页" class="btn btn-success" id="edit" onclick="">
-                    <input type="button" value="下一页" class="btn btn-success" id="edit" onclick="">
+                     <a class="btn btn-success" href="listArticle.do?page=${page.firstPage}">第一页</a>
+       				 <a	class="btn btn-success" href="listArticle.do?page=${page.prePage}">上一页</a>
+                     <a  class="btn btn-success" href="listArticle.do?page=${page.nextPage}">下一页</a>
+       				 <a  class="btn btn-success"	href="listArticle.do?page=${page.lastPage}">最后页</a>
                 </div>
 		<script type="text/javascript">
-			function editArticle(id){
-				window.location="editArticle.php?id="+id;
+			function editArticle(id){			
+				window.location="editArticle.do?id="+id;
 			}
 			function delArticle(id){
 				if(window.confirm("您确定要删除吗？删除之后不能恢复哦！！！")){
-					window.location="doAdminAction.php?act=delArticle&id="+id;
+					window.location="deleteArticle.do?id="+id;
 				}
 			}
 			function addArticle(){
-				window.location="addArticle.php";
+				window.location="addArticle.do";
 			}
 			//兼容火狐浏览器的keypress写法
 			function search(evt){

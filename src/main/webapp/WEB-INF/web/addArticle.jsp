@@ -26,12 +26,12 @@
 	</div>
 	<div class="table_all">
 		<div class="basicinfo_table">
-			<form id="formArticle" name="formArticle" action="handleArticle.do" method="post">
+			<form id="formArticle" name="formArticle" action="###" method="post">
 			<table   cellspacing="0" cellpadding="0">	
 				<tr><td class="basicinfo_title">标题：</td><td ><input type="text"  name="title" id="title" class="txtinput fl" style="width: 320px;"/><p id="checkname" class="fl"></p></td></tr>
 				<tr><td class="basicinfo_title td_crossline">发布到：</td>
 					<td class="td_crossline" >
-						<select id="category" name="categoryId" class="txtinput point">
+						<select id="categoryId" name="categoryId" class="txtinput point">
 						<c:forEach items="${categoryName}" var="cname" >
 							<option value="${cname.id}">${cname.name}</option>
 						</c:forEach>
@@ -40,8 +40,8 @@
 				<tr><td class="basicinfo_title td_crossline">作者：</td><td class="td_crossline" ><input type="text" name="author" id="author" class="txtinput" value="" /></td></tr>
 				<tr><td class="basicinfo_title td_crossline">内容：</td><td class="td_crossline"><textarea id="content" name="content" style="width: 80%;height: 200px;"></textarea></td></tr>				
 			</table>
-			<button id="btn_add" class="btn btn-primary">发布文章</button>	
 			</form>
+			<input id="btn_add"  type="button"  class="btn btn-primary" value="发布文章"></input>
 		</div><!--basicinfo_table结束-->	
 		<div><p id="createResult_red"></p></div>
 		<div><p id="createResult_green"></p></div>
@@ -75,6 +75,7 @@
 		});
 $("#btn_add").click(function(){
 	    var data=$("#formArticle").serialize()
+	    console.log(data)
 		var flag = $('#formArticle').valid();
 		if(flag){
 			var d1= dialog({
@@ -84,39 +85,34 @@ $("#btn_add").click(function(){
 				d1.show();					 
 			});
 			$.ajax({
-				type:"POST",
-				url:"handleArticle.do",
-				data:data,
-				dataType:"json",
-				success:function(data){
-					console.log(1);
-					if(data.code==1){
+				"type":"POST",
+				"url":"handleArticle.do",
+				"data":data,
+				"dataType":"json",
+				success:function(obj){
+					console.log(obj.code)
+					if(obj.code==1){
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
-							content:'<span class=\'save_success\'>'+data.message+'</span>',
-							quickClose:true,
+							content:'<span class=\'save_success\'>'+obj.message+'</span>',
+							quickClose:true //点击空白出快速关闭	
 						});
-						d.show();	
-						setTimeout(function(){
-							d.close().remove();
-						},100000);
-						window.location='${base}/admin/addArtile.do';
+						d.show();
+						$("#formArticle input").val("")
+						window.editor.html("")
 					}
 					else{
 						d1.close().remove();//关闭中间过度动画
 						var d= dialog({
-							content:'<span class=\'save_failed\'>'+data.message+'</span>',
+							content:'<span class=\'save_failed\'>'+fail+'</span>',
 							quickClose:true,//点击空白出快速关闭
 						});
 						d.show();
-						setTimeout(function(){
-							d.close().remove();
-						},100000);
 					}
 				},
 				error:function(jqXHR){
-					alert("发生错误:"+jqXHR.message);
-				},
+					alert("发生错误:"+jqXHR.status);
+				}
 			});
 		}
 		});
@@ -136,9 +132,10 @@ $("#btn_add").click(function(){
 	});
 	//调用编辑器
 	KindEditor.ready(function(K){
-		window.editor=K.create('#content');
-	});
-	
+		window.editor=K.create('#content',{
+            afterBlur: function () { this.sync();}
+            });
+        });
 </script>
 </body>
 </html>

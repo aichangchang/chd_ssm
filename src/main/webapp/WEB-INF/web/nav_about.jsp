@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script src="../plugins/myFocus/myfocus-2.0.4.min.js" type="text/javascript" charset="utf-8"></script><!--引入myFocus库-->
+<script type="text/javascript" src="../js/content.js"></script>
 <script type="text/javascript">
 myFocus.set({
 	id:'boxID',//焦点图盒子ID
@@ -119,7 +120,6 @@ $(document).ready(function(){
 	</div>
 	<div class="masklayer">  </div><!--遮罩层-->
 </body>
-<script type="text/javascript" src="../js/content.js"></script>
 <script type="text/javascript">
     var id=${id}
 	switch (id) {
@@ -136,7 +136,7 @@ $(document).ready(function(){
 		$(".content_right").load("c_about.do?id=4");
 		break;
 	case 13:
-		$(".content_right").load("c_charges.php");
+		$(".content_right").load("c_contact.do");
 		break;
 	case 5:
 		$(".content_right").css("display","none");

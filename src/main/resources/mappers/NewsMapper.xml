@@ -14,33 +14,62 @@
 		WHERE
 		id=#{id}
 	</select>
-	<select id="listNewsCategoryName" resultType="cn.com.bean.NewsCategory">
+	<select id="listNewsCategoryName"
+		resultType="cn.com.bean.NewsCategory">
 		SELECT * FROM news_category
 	</select>
-    <insert id="insertNews"  useGeneratedKeys="true" keyProperty="id" parameterType="cn.com.bean.News">
-		INSERT INTO news 
+	<insert id="insertNews" useGeneratedKeys="true" keyProperty="id"
+		parameterType="cn.com.bean.News">
+		INSERT INTO news
 		(
-		  title,
-		  author,
-		  create_time,
-		  content,
-		  count,
-		  category_id
+		title,
+		author,
+		create_time,
+		content,
+		count,
+		category_id
 		)
 		VALUES
 		(
-		  #{title},
-		  #{author},
-		  #{createTime},
-		  #{content},
-		  #{count},
-		  #{categoryId}
+		#{title},
+		#{author},
+		#{createTime},
+		#{content},
+		#{count},
+		#{categoryId}
 		)
-		</insert>
-		<select id="listNewsAll" resultType="cn.com.bean.News">
-			SELECT * FROM news;
-		</select>
-		<select id="listNewsByCategoryId" resultType="cn.com.bean.News">
-			SELECT * FROM  news  WHERE  category_id=#{categoryId};
-		</select> 
+	</insert>
+	<select id="listNewsAll" resultType="cn.com.bean.News">
+		SELECT * FROM news
+	</select>
+	<select id="listNewsByCategoryId" resultType="cn.com.bean.News">
+		SELECT * FROM news
+		WHERE category_id=#{categoryId}
+	</select>
+	<delete id="deleteNews">
+		DELETE FROM news WHERE id=#{id}
+	</delete>
+	<select id="editNews" resultType="cn.com.bean.News">
+		SELECT
+		n.id,
+		n.title,
+		n.author,
+		n.content,
+		c.name
+		FROM
+		news n
+		LEFT JOIN
+		news_category c
+		ON
+		n.category_id = c.id
+		WHERE
+		n.id=#{id}
+	</select>
+	<update id="updateArticle">
+		UPDATE  news  SET  
+		title=#{title},
+		author=#{author},
+		content=#{content}
+		WHERE id=#{id}
+	</update>
 </mapper>

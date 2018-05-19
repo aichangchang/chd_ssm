@@ -43,17 +43,20 @@ public class MainController {
 	}
 
 	@RequestMapping("/c_about.do")
-	public String About(@RequestParam("id") Integer id, ModelMap modelMap) {
+	public String about(@RequestParam("id") Integer id, ModelMap modelMap) {
 		News news = newsService.getNewsById(id);
 		modelMap.addAttribute("news", news);
 		return "c_about";
 	}
 
 	@RequestMapping("/c_environment.do")
-	public String Environment() {
+	public String environment() {
 		return "c_environment";
 	}
-
+	@RequestMapping("/c_contact.do")
+	public String contact(){
+		return "c_contact";
+	}
 	@RequestMapping("/law.do")
 	public String law(@RequestParam("id") Integer categoryId, ModelMap modelMap) {
 		List<News> news = newsService.listNewsByCategoryId(categoryId);
