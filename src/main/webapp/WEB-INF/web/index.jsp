@@ -14,7 +14,7 @@
 <title>福利儿童院</title>
 <link rel="shortcut icon" href=""/><!--加图标-->
 <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
-<link rel="stylesheet" type="text/css" href="../css/main.css"/ media="screen and (min-width:481px)">
+<link rel="stylesheet" type="text/css" href="../css/main.css" media="screen and (min-width:481px)">
 <link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
 <link rel="stylesheet" type="text/css" href="../plugins/jquery.bxslider/jquery.bxslider.css"/>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -294,9 +294,7 @@
 	<!--wrap结束-->
 	<!--to_top-->
 	<a id="to_top" class="clearfix" href="javascript:;" title="回到顶部"></a>
-	
 	<div class="masklayer">  </div><!--遮罩层-->
 </body>
 <script type="text/javascript" src="../js/main.js"></script><!--自己写的js文件要放在最后面-->
-
 </html>

@@ -19,9 +19,13 @@ insert into  news values (null,'孤儿院项目完工！一切付出只为给孩子更好的学习生活
 insert into  news values (null,'民政部关于进一步加强救助管理工作的通知（摘要）','民函[2009]114号',now(),'  严格控制现金救助。各地民政部门要遵守救济资金使用纪律和规定，严格控制现金救助，不得以发放现金的形式息事宁人，助长甚至纵容骗助行为，对于求（受）助人员提出的无理要求要坚决予以拒绝。凡受助人员需跨县（区）返乡的，救助管理机构只提供乘车凭证和食品，不得提供现金。县人民政府民政部门或外地救助管理机构护送的求助人员，凡符合救助条件的，当地救助管理机构应当予以接收。',0,2);
 insert into  news values (null,'本院介绍','儿童福利院',now(),'儿童福利院（Children Welfare Office）是由国家民政部门举办，国家给予经费，儿童的公民权利、生存、生活和受教育的权利受到法律的保护的儿童福利机构。儿童福利院主要收养无人抚养的孤儿，弃婴和残疾儿童的社会福利事业单位。在过去由外国教会和社会慈善团体所办的育婴堂、育婴院、孤儿院等慈善救济机构均属此类。',0,3);
 
+
+
 insert into newsCategory values(1,'孤儿救助');    
 insert into newsCategory values(2,'本院要闻');    
-insert into newsCategory values(3,'本院介绍');         
+insert into newsCategory values(3,'本院介绍');   
+insert into newsCategory values(4,'法律法规');   
+      
 create table user(
       id int  auto_increment primary key,
 	  username varchar(20),

@@ -2,6 +2,7 @@ package cn.com.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -51,6 +52,14 @@ public class MainController {
 	@RequestMapping("/c_environment.do")
 	public String Environment() {
 		return "c_environment";
+	}
+
+	@RequestMapping("/law.do")
+	public String law(@RequestParam("id") Integer categoryId, ModelMap modelMap) {
+		List<News> news = newsService.listNewsByCategoryId(categoryId);
+		System.out.println(news);
+		modelMap.addAttribute("listNews", news);
+		return "law";
 	}
 
 }

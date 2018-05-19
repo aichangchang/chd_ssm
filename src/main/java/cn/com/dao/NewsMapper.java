@@ -14,6 +14,10 @@ public interface NewsMapper {
 
 	List<NewsCategory> listNewsCategoryName();
 
-	void insertNews(@Param("title") String title, @Param("author") String author, @Param("content") String content,@Param("categoryId") Integer  categoryId );
+	void insertNews(News news);
+	
+	List<News> listNewsAll();
+	
+	List<News> listNewsByCategoryId(@Param("categoryId") Integer categoryId);
 	
 }

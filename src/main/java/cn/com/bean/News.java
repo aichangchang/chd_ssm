@@ -1,10 +1,12 @@
 package cn.com.bean;
 
+import java.util.Date;
+
 public class News {
 	private Integer id;
 	private String title;
 	private String author;
-	private String createTime;
+	private Date createTime;
 	private String content;
 	private Integer count;
 	private Integer categoryId;
@@ -33,11 +35,11 @@ public class News {
 		this.author = author;
 	}
 
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 

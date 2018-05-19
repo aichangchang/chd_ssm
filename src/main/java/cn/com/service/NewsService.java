@@ -10,5 +10,7 @@ public interface NewsService {
 	 List<News> listNews(Integer categoryId,Integer num);
 	 News getNewsById(Integer id);
 	 List<NewsCategory> listNewsCategory();
-	 void insertNews( String title,  String author,  String content,Integer  categoryId );
+	 void insertNews( News news);
+	 List<News> listNewsAll();
+	 List<News> listNewsByCategoryId(Integer categoryId);
 }

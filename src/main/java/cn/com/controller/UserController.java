@@ -22,6 +22,7 @@ import com.google.code.kaptcha.Constants;
 
 import cn.com.bean.ResponseResult;
 import cn.com.bean.User;
+import cn.com.dao.NewsMapper;
 import cn.com.domain.UserDto;
 import cn.com.service.UserService;
 
@@ -150,4 +151,7 @@ public class UserController {
 		}
 		return result;
 	}
+
+	
+	
 }

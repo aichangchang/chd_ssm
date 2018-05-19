@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
-<title> <?php echo $title['category']; ?> </title>
+<title></title>
 <link rel="shortcut icon" href="images/favicon.ico"/><!--加图标-->
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
@@ -104,6 +104,9 @@ $(document).ready(function(){
 		<c:if test="${id==12}">
 		<iframe class="content_right2" src="c_environment.do" frameborder="0" width="" height=""></iframe>
 		</c:if>
+			<c:if test="${id==5}">
+		<iframe class="content_right2" src="law.do?id=5" frameborder="0" width="" height=""></iframe>
+		</c:if>
 	</div><!--content结束-->
 	</div><!--wrap结束-->
 	<a id="to_top" href="javascript:;" title="回到顶部"></a>
@@ -136,7 +139,8 @@ $(document).ready(function(){
 		$(".content_right").load("c_charges.php");
 		break;
 	case 5:
-		$(".content_right").load("c_about.php?id=5");
+		$(".content_right").css("display","none");
+		$(".content_right2").css("display","block");
 		break;
 	case 12:
 		$(".content_right").css("display","none");

@@ -15,6 +15,32 @@
 		id=#{id}
 	</select>
 	<select id="listNewsCategoryName" resultType="cn.com.bean.NewsCategory">
-		SELECT * FROM newscategory
+		SELECT * FROM news_category
 	</select>
+    <insert id="insertNews"  useGeneratedKeys="true" keyProperty="id" parameterType="cn.com.bean.News">
+		INSERT INTO news 
+		(
+		  title,
+		  author,
+		  create_time,
+		  content,
+		  count,
+		  category_id
+		)
+		VALUES
+		(
+		  #{title},
+		  #{author},
+		  #{createTime},
+		  #{content},
+		  #{count},
+		  #{categoryId}
+		)
+		</insert>
+		<select id="listNewsAll" resultType="cn.com.bean.News">
+			SELECT * FROM news;
+		</select>
+		<select id="listNewsByCategoryId" resultType="cn.com.bean.News">
+			SELECT * FROM  news  WHERE  category_id=#{categoryId};
+		</select> 
 </mapper>

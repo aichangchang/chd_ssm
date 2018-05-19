@@ -209,7 +209,6 @@ label.error {
 /*表格内容*/
 .basicinfo_table{
 	margin: 20px 20px 20px 10px;
-	
 }
 .basicinfo_table table{
 	width: 80%;
@@ -292,7 +291,7 @@ label.error {
 	border-width: 1px 0 0;
 	border-color: #e0e0e0;
 	border-style: solid;
-	padding-top: 15px;
+	padding-top: 10px;
 }
 .btn_save{
 	width: 92px;

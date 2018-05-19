@@ -1,5 +1,6 @@
 package cn.com.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.bean.Employee;
+import cn.com.bean.News;
 import cn.com.bean.NewsCategory;
 import cn.com.bean.ResponseResult;
 import cn.com.service.AdminService;
@@ -56,7 +58,8 @@ public class adminController {
 	}
 
 	@RequestMapping("/listArticle.do")
-	public String listAticle() {
+	public String listAticle(ModelMap modelMap) {
+		modelMap.addAttribute("listNews", newsService.listNewsAll());
 		return "listArticle";
 	}
 
@@ -77,5 +80,15 @@ public class adminController {
 		}
 		return result;
 	}
-
+	@RequestMapping("/handleArticle.do")
+	@ResponseBody
+	public ResponseResult<Void> handleArticle(News news){
+		news.setCreateTime(new Date());
+		news.setCount(0);
+		newsService.insertNews(news);
+		result =new ResponseResult<Void>();
+		result.setCode(1);
+		result.setMessage("success");
+		return result;
+	}
 }

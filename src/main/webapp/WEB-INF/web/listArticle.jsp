@@ -19,7 +19,6 @@
 		<div class="location">
 			当前位置:&nbsp;<a id="first" href="main.php">首页</a>&nbsp;&gt;&nbsp;<a>新闻管理</a>&nbsp;&gt;&nbsp;<a href="#" id="third">文章列表</a>
 		</div>
-		<h3 class="biaoti">文章列表</h3>
 		<div class="details">
                     <div class="details_operation clearfix">
                         <div class="fl">
@@ -31,9 +30,6 @@
 				                    <div class="bui_select">
 				                        <select id="" class="form-control" onchange="change(this.value)">
 				                        	<option value="">-请选择-</option>
-				                            <?php foreach($cates as $cate): ?>
-				                            	<option value="<?php echo $cate['id']; ?>"<?php echo $cate['id']==$keywords?"selected='selected'":null ?> ><?php echo $cate['category']; ?></option>
-				                            <?php endforeach; ?>
 				                        </select>
 				                    </div>
 				                </div>
@@ -57,22 +53,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $i=1; foreach($rows as $row):?>
+                        <c:forEach begin="0" end="3"  items="${listNews}"  var="allNews">
                             <tr>
-                                <td><label class="label_id"><?php echo $i;?></label></td>
-                                <td><?php echo $row['category'];?></td>
-                                 <td><?php echo $row['title'];?></td>
-                                <td><?php echo $row['author'];?></td>
-                                <td align="center"><input type="button" value="修改" class="btn btn-success" id="edit" onclick="editArticle(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn btn-danger" id="del" onclick="delArticle(<?php echo $row['id'];?>)"></td>
+                                <td><label class="label_id"><c:out value="${allNews.id}"></c:out></label></td>
+                                <td>${allNews.categoryId}</td>
+                                 <td>${allNews.title}</td>
+                                <td>${allNews.author}</td>
+                                <td align="center"><input type="button" value="修改" class="btn btn-success" id="edit" onclick="editArticle(${allNews.id})"><input type="button" value="删除" class="btn btn-danger" id="del" onclick="delArticle(${allNews.id})"></td>
                             </tr>
-                            <?php $i++; endforeach;?>
-                            <?php if($totalRows>$pageSize):?>
-                            <tr>
-                            	<td colspan="5"><?php echo showPage($page, $totalPage);?></td>
-                            </tr>
-                            <?php endif;?>
+                         </c:forEach>                       
                         </tbody>
                     </table>
+                    <input type="button" value="上一页" class="btn btn-success" id="edit" onclick="">
+                    <input type="button" value="下一页" class="btn btn-success" id="edit" onclick="">
                 </div>
 		<script type="text/javascript">
 			function editArticle(id){
