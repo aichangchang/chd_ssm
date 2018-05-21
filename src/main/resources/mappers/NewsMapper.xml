@@ -9,7 +9,15 @@
 		#{num}
 	</select>
 	<select id="getNewsById" resultType="cn.com.bean.News">
-		SELECT * FROM
+		SELECT 
+			id,
+		title,
+		author,
+		create_time createTime,
+		content,
+		count,
+		category_id categoryId
+	    FROM
 		news
 		WHERE
 		id=#{id}
@@ -43,7 +51,15 @@
 		SELECT * FROM news
 	</select>
 	<select id="listNewsByCategoryId" resultType="cn.com.bean.News">
-		SELECT * FROM news
+		SELECT 
+		id,
+		title,
+		author,
+		create_time createTime,
+		content,
+		count,
+		category_id categoryId
+		FROM news
 		WHERE category_id=#{categoryId}
 	</select>
 	<delete id="deleteNews">

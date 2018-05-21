@@ -61,16 +61,11 @@ window.onload=function(){
 		$(".content_right2").css("display","block");
 	});
 	//左侧菜单按钮事件
-	btnClick("#charges","c_charges.php");
 	btnClick("#about","nav_about.do?id=3");
-	btnClick("#services","nav_about.do?id=4");
-	btnClick("#knowledge","c_knowledge.php?id=2");
+	btnClick("#services","nav_about.do?id=1");
+	btnClick("#knowledge","nav_about.do?id=4");
 	btnClick("#professional","nav_about.do?id=5");
 	btnClick("#contact","nav_about.do?id=13");
-	$("#environment").on('click',function(){
-		$(".content_right").css("display","none");
-		$(".content_right2").css("display","block");
-	});
 //回到顶部
 $('#to_top').click(function(){
 		$('body,html').animate({scrollTop:0},500);

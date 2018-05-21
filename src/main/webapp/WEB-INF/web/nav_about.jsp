@@ -89,10 +89,9 @@ $(document).ready(function(){
 			<div class="content_l_list">
 				<ul>
 					<li><a id="about" href="javascript:;">本院介绍<span>About Us</span></a></li>
-					<li><a id="environment" href="javascript:;">环境设施<span>Environment</span></a></li>
 					<li><a id="services" href="javascript:;">孤儿救助<span>Services</span></a></li>
-					<li><a id="knowledge" href="javascript:;">孤儿助养<span>Knowledge</span></a></li>
-					<li><a id="professional" href="javascript:;">法律法规<span>Professional Care</span></a></li>
+					<li><a id="knowledge" href="javascript:;">孤儿助养<span>help</span></a></li>
+					<li><a id="professional" href="javascript:;">法律法规<span>laws</span></a></li>
 					<li><a id="contact" href="javascript:;">联系我们<span>Contact Us</span></a></li>
 				</ul>
 			</div>
@@ -104,9 +103,6 @@ $(document).ready(function(){
 		</div><!--content_right结束-->
 		<c:if test="${id==12}">
 		<iframe class="content_right2" src="c_environment.do" frameborder="0" width="" height=""></iframe>
-		</c:if>
-			<c:if test="${id==5}">
-		<iframe class="content_right2" src="law.do?id=5" frameborder="0" width="" height=""></iframe>
 		</c:if>
 	</div><!--content结束-->
 	</div><!--wrap结束-->
@@ -139,8 +135,7 @@ $(document).ready(function(){
 		$(".content_right").load("c_contact.do");
 		break;
 	case 5:
-		$(".content_right").css("display","none");
-		$(".content_right2").css("display","block");
+		$(".content_right").load("law.do?id=5");
 		break;
 	case 12:
 		$(".content_right").css("display","none");

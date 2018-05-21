@@ -24,7 +24,7 @@ insert into  news values (null,'本院介绍','儿童福利院',now(),'儿童福利院（Childr
 insert into newsCategory values(1,'孤儿救助');    
 insert into newsCategory values(2,'本院要闻');    
 insert into newsCategory values(3,'本院介绍');   
-insert into newsCategory values(4,'法律法规');   
+insert into newsCategory values(5,'法律法规');   
       
 create table user(
       id int  auto_increment primary key,

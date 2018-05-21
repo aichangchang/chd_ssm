@@ -118,12 +118,10 @@ $(document).ready(function(){
 		<div class="content_l">
 			<div class="content_l_list">
 				<ul>
-					<li><a id="about" href="javascript:;">养老院介绍<span>About Us</span></a></li>
-					<li><a id="services" href="javascript:;">服务特色<span>Services</span></a></li>
-					<li><a id="knowledge" href="javascript:;">保健常识<span>Knowledge</span></a></li>
-					<li><a id="professional" href="javascript:;">专业护理<span>Professional Care</span></a></li>
-					<li><a id="environment" href="javascript:;">环境设施<span>Environment</span></a></li>
-					<li><a id="charges" href="javascript:;">收费标准<span>Charges</span></a></li>
+					<li><a id="about" href="javascript:;">本院介绍<span>About Us</span></a></li>
+					<li><a id="services" href="javascript:;">孤儿救助<span>Services</span></a></li>
+					<li><a id="knowledge" href="javascript:;">孤儿助养<span>help</span></a></li>
+					<li><a id="professional" href="javascript:;">法律法规<span>laws</span></a></li>
 					<li><a id="contact" href="javascript:;">联系我们<span>Contact Us</span></a></li>
 				</ul>
 			</div>

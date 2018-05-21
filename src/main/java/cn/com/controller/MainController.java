@@ -62,7 +62,7 @@ public class MainController {
 		List<News> news = newsService.listNewsByCategoryId(categoryId);
 		System.out.println(news);
 		modelMap.addAttribute("listNews", news);
-		return "law";
+		return "c_law";
 	}
 
 }
