@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.ChildrenMapper">
+	<select id="findChildrenById" resultType="cn.com.bean.Children">
+		SELECT
+		id,
+		number,
+		cage,
+		cbirthday,
+		reach,
+		cname,
+		cgender,
+		cphone,
+		cemail,
+		cid_number cidNumber,
+		caddress,
+		c_case_history cCaseHistory,
+		cagree,
+		cMessage
+		FROM children WHERE
+		id=#{id}
+	</select>
+	<select id="findChildrenByName"
+		resultType="cn.com.bean.Children">
+		SELECT
+		id,
+		number,
+		cage,
+		cbirthday,
+		reach,
+		cname,
+		cgender,
+		cphone,
+		cemail,
+		cid_number cidNumber,
+		caddress,
+		c_case_history cCaseHistory,
+		cagree,
+		cMessage
+		FROM children WHERE cname=#{cname}
+	</select>
+	<insert id="insertChildren" parameterType="cn.com.bean.Children">
+		INSERT INTO children (
+		id,
+		number,
+		cage,
+		cbirthday,
+		reach,
+		cname,
+		cgender,
+		cphone,
+		cemail,
+		cid_number,
+		caddress,
+		c_case_history,
+		cagree,
+		cMessage
+		) values(
+		#{id},
+		#{number},
+		#{cage},
+		#{cbirthday},
+		#{reach},
+		#{cname},
+		#{cgender},
+		#{cphone},
+		#{email},
+		#{cidNumber},
+		#{caddress},
+		#{cCaseHistory},
+		#{cagree},
+		#{cMessage}
+		)
+	</insert>
+	<select id="listChildren" resultType="cn.com.bean.Children">
+		SELECT 
+		id,
+		number,
+		cage,
+		cbirthday,
+		reach,
+		cname,
+		cgender,
+		cphone,
+		cemail,
+		cid_number cidNumber,
+		caddress,
+		c_case_history cCaseHistory,
+		cagree,
+		cmessage cMessage
+		FROM children
+	</select>
+	<delete id="deleteChildren">
+		DELETE FROM children WHERE id=#{id}
+	</delete>
+	<update id="updateChildren">
+		UPDATE children SET
+		number=#{number},
+		cbirthday=#{cbirthday},
+		reach=#{reach},
+		cname=#{cname},
+		cgender=#{cgender},
+		c_case_history=#{cCaseHistory},
+		cagree=#{agree},
+		cmessage=#{cMessage}
+		WHERE id=#{id} 
+	</update>
+	
+</mapper>

@@ -91,7 +91,6 @@
 						<!-- <li><label class="fl">民族：</label><div class="info_val fl">${user.nation}</div></li>-->
 						<li><label class="fl">学历状况：</label><div class="info_val fl">${user.education}</div></li>
 						<li><label class="fl">婚烟状况：</label><div class="info_val fl">${user.maritalStatus}</div></li>
-						<!--<li><label class="fl">家庭人口：</label><div class="info_val fl">${user.children}</div></li>-->
 					 	<li><label class="fl">身份证号：</label><div class="info_val fl">${user.idNumber}</div></li>
 						<li><label class="fl">手机号码：</label><div class="info_val fl">${user.phone}</div></li>
 						<li><label class="fl">邮箱：</label><div class="info_val fl">${user.email}</div></li>

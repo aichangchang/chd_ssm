@@ -138,18 +138,33 @@
 						<h3><span>+</span>用户管理</h3>
 						<ul class="menu_item_child none">
 							<li>
-								<a href="listUsers.php" target="mainFrame">
+								<a href="listUsers.do" target="mainFrame">
 									用户列表
 								</a>
 							</li>	
 							<li>
-								<a href="addUsers.php" target="mainFrame">
+								<a href="addUsers.do" target="mainFrame">
 									添加用户
 								</a>
 							</li>					
 						</ul>
 					</li>
-					<li class="menu_item" style="display: <?php echo $row['isAdmin']=='0'?'none':'block'; ?>;">
+					<li class="menu_item">
+						<h3><span>+</span>儿童管理</h3>
+						<ul class="menu_item_child none">
+							<li>
+								<a href="listChildren.do" target="mainFrame">
+									儿童列表
+								</a>
+							</li>	
+							<li>
+								<a href="addChildren.do" target="mainFrame">
+									添加儿童
+								</a>
+							</li>					
+						</ul>
+					</li>
+					<%-- <li class="menu_item" style="display: <?php echo $row['isAdmin']=='0'?'none':'block'; ?>;">
 						<h3><span>+</span>费用管理</h3>
 						<ul class="menu_item_child none">
 							<li>
@@ -163,7 +178,7 @@
 								</a>
 							</li>
 						</ul>
-					</li>
+					</li> --%>
 					<li class="menu_item">
 						<h3><span>+</span>接待管理</h3>
 						<ul class="menu_item_child none">
@@ -178,8 +193,8 @@
 								</a>
 							</li>
 						</ul>
-					</li>
-					<li class="menu_item">
+					</li> 
+					<!-- <li class="menu_item">
 						<h3><span>+</span>床位管理</h3>
 						<ul class="menu_item_child none">
 							<li>
@@ -193,7 +208,7 @@
 								</a>
 							</li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<!--cont结束-->

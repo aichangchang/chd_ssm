@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.Soundbank;
 import javax.websocket.Session;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -100,6 +101,7 @@ public class UserController {
 
 	@RequestMapping("/personal_info.do")
 	public String personalInfo(HttpSession session, ModelMap modelMap) {
+		System.out.println(1);
 		User user = userService.findUserByUsername((String) session.getAttribute("username"));
 		System.out.println(user);
 		modelMap.addAttribute("user", user);

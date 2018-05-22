@@ -15,10 +15,23 @@ public class User {
 	private String maritalStatus;
 	private String phone;
 	private String email;
-	private String children;
+	private String family;
+	private String photo;
 	private String idNumber;
 	private String address;
 	private String caseHistory;
+	private Integer agree;
+	private String assess;
+	private String evidence;
+	private Integer childrenId;
+
+	public String getEvidence() {
+		return evidence;
+	}
+
+	public void setEvidence(String evidence) {
+		this.evidence = evidence;
+	}
 
 	public Integer getId() {
 		return id;
@@ -132,20 +145,63 @@ public class User {
 		this.address = address;
 	}
 
-	public String getChildren() {
-		return children;
+
+	
+	public String getFamily() {
+		return family;
 	}
 
-	public void setChildren(String children) {
-		this.children = children;
+	public void setFamily(String family) {
+		this.family = family;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getCaseHistory() {
+		return caseHistory;
+	}
+
+	public void setCaseHistory(String caseHistory) {
+		this.caseHistory = caseHistory;
+	}
+	
+	public Integer getAgree() {
+		return agree;
+	}
+
+	public void setAgree(Integer agree) {
+		this.agree = agree;
+	}
+
+	public String getAssess() {
+		return assess;
+	}
+
+	public void setAssess(String assess) {
+		this.assess = assess;
+	}
+
+	public Integer getChildrenId() {
+		return childrenId;
+	}
+
+	public void setChildrenId(Integer childrenId) {
+		this.childrenId = childrenId;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", gender="
 				+ gender + ", age=" + age + ", birthday=" + birthday + ", nation=" + nation + ", education=" + education
-				+ ", maritalStatus=" + maritalStatus + ", phone=" + phone + ", email=" + email + ", children="
-				+ children + ", idNumber=" + idNumber + ", address=" + address + "]";
+				+ ", maritalStatus=" + maritalStatus + ", phone=" + phone + ", email=" + email + ", family=" + family
+				+ ", idNumber=" + idNumber + ", address=" + address + ", caseHistory=" + caseHistory + ", agree="
+				+ agree + ", assess=" + assess + ", childrenId=" + childrenId + "]";
 	}
 
 }

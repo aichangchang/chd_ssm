@@ -36,9 +36,6 @@
 		department_id  departmentId
 	  From  employee WHERE username=#{username} and password=#{password} and isJob=1
 	</select>
-	<insert id="insertNews">
-	   INSERT INTO news (title,author,create_time createTime,content,category_id categoryId) values(#{title},#{author},now(),#{content},#{categoryId})
-	</insert>
 	<!-- <update id="updateMessage">
 		UPDATE user SET
 		name=#{name},gender=#{gender},birthday=#{birthday},id_number=#{idNumber},education=#{education},marital_status=#{maritalStatus},phone=#{phone}

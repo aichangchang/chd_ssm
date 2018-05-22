@@ -19,8 +19,12 @@
 		email,
 		id_number	idNumber,
 		address,
-		children,
-		case_history caseHistory
+		family,
+		case_history caseHistory,
+		agree, 
+		assess,
+		evidence,
+		children_id childrenId
 		FROM user WHERE username=#{username}
 	</select>
 	<insert id="saveUser">
@@ -39,4 +43,99 @@
 	    UPDATE user SET
 	    password=#{password} WHERE username=#{username}
 	</update>
+	<select id="listUser" resultType="cn.com.bean.UserInfo" >
+	    SELECT
+		u.id,
+		u.username,
+		u.name,
+		u.password,
+		u.gender,
+		u.age,
+		u.birthday,
+		u.nation,
+		u.education,
+		u.marital_status	maritalStatus ,
+		u.phone,
+		u.email,
+		u.id_number   idNumber   ,
+		u.address,
+		u.family,
+		u.case_history caseHistory,
+		u.agree ,
+		u.assess,
+		evidence ,
+		u.children_id  childrenId, 
+		c.cname 
+		FROM user u LEFT JOIN 	children c ON  u.children_id=c.id
+	</select>
+	<insert id="InsertUser">
+		INSERT INTO user (username,password,name,gender,birthday,education,marital_status,phone,case_history)
+		values(#{username},#{password},#{name},#{gender},#{birthday},#{education},#{maritalStatus},#{phone},#{caseHistory})
+	</insert>
+	<delete id="deleteUser">
+		DELETE FROM user WHERE id=#{id}
+	</delete>
+	<select id="findUserById" resultType="cn.com.bean.User">
+		SELECT
+		id,
+		username,
+		name,
+		password,
+		gender,
+		age,
+		birthday,
+		nation,
+		education,
+		marital_status maritalStatus,
+		phone,
+		email,
+		id_number	idNumber,
+		address,
+		family,
+		case_history caseHistory,
+		agree, 
+		assess,
+		evidence ,
+		children_id childrenId
+		FROM user WHERE id=#{id}
+	</select>
+	<update id="updateUserMessage">
+	  UPDATE user SET 
+	  name= #{name},
+	  gender=#{gender},
+	  birthday= #{birthday},
+	  education=#{education},
+	  marital_status=#{maritalStatus},
+	  case_history= #{caseHistory},
+	  evidence=#{evidence},
+	  phone=#{phone},
+	  assess= #{assess},
+	  agree=#{agree},
+	  children_id=#{childrenId}
+	  WHERE id=#{id}
+	</update>
+	<select id="findUserByChildrenId" resultType="cn.com.bean.User">
+		SELECT
+		id,
+		username,
+		name,
+		password,
+		gender,
+		age,
+		birthday,
+		nation,
+		education,
+		marital_status maritalStatus,
+		phone,
+		email,
+		id_number	idNumber,
+		address,
+		family,
+		case_history caseHistory,
+		agree, 
+		assess,
+		evidence ,
+		children_id childrenId
+		FROM user WHERE children_id=#{childrenId}
+	</select>
 </mapper>

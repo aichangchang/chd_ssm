@@ -98,7 +98,7 @@
 	<a href="" target=""></a>
    	<div class="wrap">
    		<h1>某孤儿院领养双选系统的设计与实现</h1>
-   		<h3 class="p1">xx：何国锋&nbsp;&nbsp;导师：xx</h3>
+   		<h3 class="p1">xx：&nbsp;&nbsp;导师：xx</h3>
    	</div>
 </body>
 </html>

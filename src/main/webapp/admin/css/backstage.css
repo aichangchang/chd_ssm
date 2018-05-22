@@ -39,8 +39,8 @@ body{
 .icon_e{background-image: url(../images/icon/e.png);}
 
 .content{overflow: hidden;}
-.main{width: 100%;float: left; margin-bottom: -999999px;padding-bottom: 999999px; overflow: hidden;}
-.menu{width: 200px; float: left; margin-left: -100%; height: 100%;  position: relative; z-index: 2; background-color: #505254; border-right: solid 1px rgb(11, 82, 215);margin-bottom: -999999px;padding-bottom: 999999px; overflow: hidden;}
+.main{width: 100%;float: left; margin-bottom: -999999px;padding-bottom: 999999px; overflow: auto;}
+.menu{width: 200px; float: left; margin-left: -100%; height: 100%;  position: relative; z-index: 2; background-color: #505254; border-right: solid 1px rgb(11, 82, 215);margin-bottom: -999999px;padding-bottom: 999999px; overflow: auto;}
 .cont{position: relative;z-index: 3; zoom:1;}
 .main .cont{margin-left: 201px;}
 

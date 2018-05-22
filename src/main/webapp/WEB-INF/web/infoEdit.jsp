@@ -110,8 +110,8 @@
 				<tr><td class="basicinfo_title td_crossline">性别:</td>
 					<td class="td_crossline">
 						<select name="u_sex" id="u_sex" class="select_small">
-						 <option>男</option>  
-						 <option>女</option>
+						 <option value="男">男</option>  
+						 <option value="女">女</option>
 						</select>
 					</td>
 				</tr>
@@ -169,8 +169,12 @@
 </body>
 <div class="masklayer">  </div><!--遮罩层-->
 <script type="text/javascript">
+$("#u_sex option[value='${user.gender}']").removeAttr("selected");//根据值去除选中状态  
+$("#u_sex option[value='${user.gender}']").attr("selected","selected");//根据值让option选中  
 $("#u_xlzk option[value='${user.education}']").removeAttr("selected");//根据值去除选中状态  
 $("#u_xlzk option[value='${user.education}']").attr("selected","selected");//根据值让option选中  
+$("#u_hyzk option[value='${user.maritalStatus}']").removeAttr("selected");//根据值去除选中状态  
+$("#u_hyzk option[value='${user.maritalStatus}']").attr("selected","selected");//根据值让option选中  
 $(".change_username").click(function(){
 	$(".rs_username").hide();
 	$(".rs_idNumber").hide();

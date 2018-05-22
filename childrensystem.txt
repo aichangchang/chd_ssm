@@ -27,12 +27,12 @@ insert into newsCategory values(3,'本院介绍');
 insert into newsCategory values(5,'法律法规');   
       
 create table user(
-      id int  auto_increment primary key,
+          id int  auto_increment primary key,
 	  username varchar(20),
 	  password varchar(20),
 	  name varchar(20),
 	  gender varchar(2),
-      age int,
+          age int,
 	  birthday datetime,
 	  nation varchar(20),
 	  education varchar(10),
@@ -44,6 +44,7 @@ create table user(
 	  family int,
 	  photo varchar(100),
 	  case_history varchar(10),
+	  agree int,
 	  assess text,	
 	  children_id int
 	 );
@@ -83,12 +84,21 @@ create  table leavenote(
 create table children(
       id int auto_increment primary key,
       number int,
-      name varchar(20)  not null,
-      password varchar(20)  not null,
-      gender varchar(2)  not null,	
-      phone varchar(20),
-      email varchar(50),
-      id_number varchar(30),
-      address  varchar(100),
-      message text
+      cage int,
+      cbirthday datetime,
+      reach datetime,	 	
+      cname varchar(20),
+      cgender varchar(2),	
+      cphone varchar(20),
+      cemail varchar(50),
+      cid_number varchar(30),
+      caddress  varchar(100),
+      c_case_history varchar(10),
+      cagree int,
+      adopter varchar(10),
+      uid int,
+      cmessage text
 );
+ insert into children (cname,cgender,cage) values ('李晓光','男','8');
+insert into children (cname,cgender,cage) values ('张小明','男','5');
+ insert into children (cname,cgender,cage) values ('李霞霞','女','6');
