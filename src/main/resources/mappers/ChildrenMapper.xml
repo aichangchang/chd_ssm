@@ -18,6 +18,7 @@
 		caddress,
 		c_case_history cCaseHistory,
 		cagree,
+		uname,
 		cMessage
 		FROM children WHERE
 		id=#{id}
@@ -38,6 +39,7 @@
 		caddress,
 		c_case_history cCaseHistory,
 		cagree,
+		uname,
 		cMessage
 		FROM children WHERE cname=#{cname}
 	</select>
@@ -89,6 +91,7 @@
 		caddress,
 		c_case_history cCaseHistory,
 		cagree,
+		uname,
 		cmessage cMessage
 		FROM children
 	</select>
@@ -103,9 +106,30 @@
 		cname=#{cname},
 		cgender=#{cgender},
 		c_case_history=#{cCaseHistory},
-		cagree=#{agree},
+		cagree=#{cagree},
+		<if test="cagree==1">
+               	uname=#{uname},
+        </if>	
 		cmessage=#{cMessage}
 		WHERE id=#{id} 
 	</update>
-	
+		<select id="listAdoptChildren" resultType="cn.com.bean.Children">
+		SELECT 
+		id,
+		number,
+		cage,
+		cbirthday,
+		reach,
+		cname,
+		cgender,
+		cphone,
+		cemail,
+		cid_number cidNumber,
+		caddress,
+		c_case_history cCaseHistory,
+		cagree,
+		uname,
+		cmessage cMessage
+		FROM children WHERE uname is null
+	</select>
 </mapper>

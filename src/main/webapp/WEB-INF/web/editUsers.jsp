@@ -80,20 +80,6 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td class="basicinfo_title td_crossline">评估：</td>
-					<td class="td_crossline"><textarea class="assessinput" name="assess" id="assess" value="" >${user.assess}</textarea></td>
-					<td class="basicinfo_title td_crossline">(预)领养<br>儿童姓名：</td><td class="td_crossline"><input type="text" name="c_name" id="c_name" class="txtinput" value="${children.cname}" />
-				</tr>
-					<tr><td class="basicinfo_title td_crossline">*是否同意领养：</td>
-					<td class="td_crossline">
-						<select name="agree" id="agree" class="select_small">
-							<option>请选择</option>						
-							<option value="1" >同意</option>
-							<option value="0" >不同意</option>
-						</select>
-					</td>
-				</tr>
-				
 			</table>
 			<input id="btn_save" class="btn_save" value="保存"></input>
 			<button class="btn_save" href="detialUsers.php?id=<?php echo $id ?>" title="点击预览">预览</button>
@@ -124,18 +110,6 @@ $("#agree option[value='${user.agree}']").attr("selected","selected");//根据�
 	}
 $().ready(function(){
 	var uid=${user.id};
-	console.log(uid)
-	console.log($("#u_name").val());
-	console.log($("#u_sex").val());
-	console.log($("#u_birth").val());
-	console.log($("#u_xlzk").val());
-	console.log($("#u_hyzk").val());
-	console.log($("#caseHistory").val());
-	console.log($("#evidence").val());
-	console.log($("#u_phone").val());
-	console.log($("#assess").val());
-	console.log($("#agree").val());
-	console.log($("#c_name").val());
 	$("input[type='text']").change(function(){
 		changeFlagTrue()
 	});

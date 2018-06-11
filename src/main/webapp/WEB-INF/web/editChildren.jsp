@@ -30,7 +30,7 @@
 	<div class="table_all">
 		<div class="basicinfo_table">
 			<table  cellspacing="0" cellpadding="0">
-				<tr><td class="basicinfo_title">编号:</td><td ><input type="text"  name="c_number" id="c_number" class="txtinput fl"/><p id="checkname" class="fl"></p></td></tr>
+				<tr><td class="basicinfo_title">编号:</td><td ><input type="text"  name="c_number" id="c_number" class="txtinput fl" value="${children.number}" /><p id="checkname" class="fl"></p></td></tr>
 				<tr><td class="basicinfo_title td_crossline">姓名：</td><td class="td_crossline"><input type="text" name="c_name" id="c_name" class="txtinput" value="${children.cname}" /></td>
 				<td class="basicinfo_title td_crossline">性别：</td>
 					<td class="td_crossline">
@@ -56,8 +56,15 @@
 					<td class="td_crossline"><input type="text" class="txtinput" name="caseHistory" id="caseHistory" value="${children.cCaseHistory}"/></td>
 				</tr>
 				<tr><td class="basicinfo_title td_crossline">记录：</td>
-					<td class="td_crossline"><textarea class="assessinput" name="record" id="c_record" value="" >${children.cMessage}</textarea></td>
-					<td class="basicinfo_title td_crossline">(预)领养<br>人姓名：</td><td class="td_crossline"><input type="text" name="u_name" id="u_name" class="txtinput" value="${user.name}" />
+					<td class="td_crossline"><textarea class="assessinput" name="record" id="c_record" value="">${children.cMessage}</textarea></td>
+					<td class="basicinfo_title td_crossline">(预)领养<br>人姓名：</td>
+					<td class="td_crossline">
+						<select name="u_name" id="u_name" class="select_small">
+							<c:forEach items="${listUser}" var="user">
+							<option value="${user.name}">${user.name}</option>
+							</c:forEach>
+						</select>
+					</td>
 				</tr>
 					<tr><td class="basicinfo_title td_crossline">*是否同意被领养：</td>
 					<td class="td_crossline">

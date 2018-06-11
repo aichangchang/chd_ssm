@@ -47,8 +47,8 @@
 		<div><p id="createResult_green"></p></div>
 	</div><!--table_all-->	
 <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="../plugins/kindeditor/kindeditor.js"></script>	
-<script type="text/javascript" charset="utf-8" src="../plugins/kindeditor/lang/zh_CN.js"></script>	
+<script type="text/javascript"	src="../plugins/kindeditor-4.1.11/kindeditor-all-min.js"></script>
+<script type="text/javascript" src="../plugins/kindeditor-4.1.11/lang/zh-CN.js"></script>
 <script type="text/javascript">
 	var changeFlag=false;//标识文本框值是否改变，为true，标识已变
 	function changeFlagTrue(){

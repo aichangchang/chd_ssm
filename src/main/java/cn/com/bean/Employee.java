@@ -6,8 +6,8 @@ public class Employee {
 	private String name;
 	private String password;
 	private String gender;
-	private String age;
-	private String salary;
+	private Integer age;
+	private Integer salary;
 	private String phone;
 	private String email;
 	private Integer isJob;
@@ -53,19 +53,19 @@ public class Employee {
 		this.gender = gender;
 	}
 
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
-	public String getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 
-	public void setSalary(String salary) {
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
 

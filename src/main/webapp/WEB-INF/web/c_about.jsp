@@ -13,6 +13,6 @@
 			
 			<div class="a_content">
 				<!--文章内容放这里-->
-				<c:out value="${news.content}"></c:out>	
+				<c:out value="${news.content}" escapeXml="false" ></c:out>	
 			</div>
 		</div><!--content_right结束-->

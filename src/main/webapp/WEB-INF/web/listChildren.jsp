@@ -9,8 +9,8 @@
 <head>
 <meta charset="utf-8">
 <title>儿童列表</title>
-<link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/backstage.css">
+<link rel="stylesheet" type="text/css" href="../admin/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../admin/css/backstage.css">
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -23,8 +23,8 @@
     <div class="details_operation clearfix">
             <div class="bui_select">
                 <input type="button" value="添&nbsp;&nbsp;加" class="btn btn-primary"  onclick="addChildren()">
-                		 <a	class="btn btn-success" href="listChildren.do?page=${page.prePage}">上一页</a>
-                     <a  class="btn btn-success" href="listChildren.do?page=${page.nextPage}">下一页</a>
+                <a	class="btn btn-success" href="listChildren.do?page=${page.prePage}">上一页</a>
+                <a class="btn btn-success" href="listChildren.do?page=${page.nextPage}">下一页</a>
             </div>    
         <div class="fr">
         	<div class="text">
@@ -59,7 +59,7 @@
                     <f:formatDate value="${children.reach}" pattern="yyyy-MM-dd" var="date"/>
                     <td>${date}</td>
                		<td>${children.cMessage}</td>
-               		<td>${children.cCaseHistory}</td>
+               		<td><c:if test="${children.uname==null||children.cagree!=1}">无领养人信息</c:if>${children.uname}</td>
                     <td align="left">
                     	<input type="button" value="详细信息" class="btn btn-info"  onclick="detialChildren(${children.id})">	
                     	<input type="button" value="修改资料" class="btn btn-success" onclick="editChildren(${children.id})">

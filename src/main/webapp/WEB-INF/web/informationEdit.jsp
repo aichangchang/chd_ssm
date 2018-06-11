@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,7 +7,7 @@
 		<ul>
 			<div class="pic_bigtx">
 				<img width="178" height="178" src="" /> <a id="editTx" class="ghtx"
-					href="javascript:;">更换头像</a>
+					href="infoEditTx.do">更换头像</a>
 			</div>
 			<li><a id="personal" href="${base}/user/personal_info.do">个人中心<span>About
 						Us</span></a></li>

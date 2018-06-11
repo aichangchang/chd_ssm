@@ -233,7 +233,7 @@ $(".change_username").click(function(){
 						d.show();
 						setTimeout(function(){
 							d.close().remove();
-						},2500);
+						},3000);
 					}
 					else{
 						d1.close().remove();//关闭中间过度动画

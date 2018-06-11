@@ -67,7 +67,6 @@ create  table department(
       id int auto_increment primary key,
       d_name varchar(20)
 );
-
 create  table leavenote(
       id int auto_increnment primary key,
 	  employee_id int,
@@ -95,8 +94,7 @@ create table children(
       caddress  varchar(100),
       c_case_history varchar(10),
       cagree int,
-      adopter varchar(10),
-      uid int,
+      uname varchar(10),
       cmessage text
 );
  insert into children (cname,cgender,cage) values ('ÀîÏş¹â','ÄĞ','8');

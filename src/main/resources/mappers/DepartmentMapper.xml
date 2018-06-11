@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.DepartmentMapper">
+	<insert id="insertDepartment">
+	  INSERT INTO 
+	  department 
+	  (d_name)
+	  VALUES
+	  (#{dname})
+	</insert>
+	<select id="getDepartmentByname"  resultType="cn.com.bean.Department">
+		SELECT id,
+		d_name dname
+		FROM department 
+		WHERE d_name=#{dname}
+	</select>
+	<select id="listDepartment" resultType="cn.com.bean.Department">
+		SELECT 
+		id,
+		d_name dname
+		FROM  department
+	</select>
+	<delete id="deleteDepartment">
+		DELETE FROM department WHERE id=#{id}
+	</delete>
+	<select id="listDEmployee" resultType="cn.com.bean.DEmployee">
+		SELECT 
+		d.id,
+		d.d_name dname,
+		e.username,
+		e.name  uname
+		FROM department d
+		LEFT JOIN
+		employee e
+		ON
+		d.id=e.department_id
+	</select>	
+	<select id="getDeparmentById" resultType="cn.com.bean.Department">
+		SELECT 
+		id,
+		d_name dname
+		FROM 
+		department
+		WHERE id=#{id}
+	</select>
+</mapper>

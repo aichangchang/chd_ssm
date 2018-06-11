@@ -16,7 +16,7 @@
 				<ul>
 					<c:forEach items="${listNews}" var="ListNews">
 						<dd>
-							<a href="article.do?id=${ListNews.id}" title="${ListNews.title}">${ListNews.title}</a>
+							<a href="article.do?id=${ListNews.id}" title="${ListNews.title}" style="font-size:16px;" class="fs16">${ListNews.title}</a>
 						</dd>
 					</c:forEach>
 				</ul>

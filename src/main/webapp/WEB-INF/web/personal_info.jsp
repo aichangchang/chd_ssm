@@ -88,7 +88,6 @@
 						<li><label class="fl">姓名：</label><div class="info_val fl">${user.name}</div></li>
 						<li><label class="fl">性别：</label><div class="info_val fl">${user.gender}</div></li>
 						<li><label class="fl">生日：</label><div class="info_val fl"><f:formatDate value="${user.birthday}" pattern="yyyy-MM-dd"/></div></li>
-						<!-- <li><label class="fl">民族：</label><div class="info_val fl">${user.nation}</div></li>-->
 						<li><label class="fl">学历状况：</label><div class="info_val fl">${user.education}</div></li>
 						<li><label class="fl">婚烟状况：</label><div class="info_val fl">${user.maritalStatus}</div></li>
 					 	<li><label class="fl">身份证号：</label><div class="info_val fl">${user.idNumber}</div></li>

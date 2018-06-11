@@ -37,10 +37,14 @@ public class ChildrenServiceImpl implements ChildrenService {
 		childrenMapper.deleteChildren(id);
 	}
 
-	public void updateChildren(Integer id, Integer number,  String name, String gender,
-			Date birthday, Date reach, String caseHistory, String record,
-			 Integer agree) {
-		childrenMapper.updateChildren(id, number, name, gender, birthday, reach, caseHistory, record, agree);
+	public void updateChildren(Integer id, Integer number,  String cname, String cgender,
+			Date cbirthday, Date reach, String cCaseHistory, String record,
+			 Integer cagree,String uname) {
+		childrenMapper.updateChildren(id, number, cname,cgender, cbirthday, reach, cCaseHistory, record, cagree, uname);
+	}
+
+	public List<Children> listAdoptChildren() {
+		return childrenMapper.listAdoptChildren();
 	}
 
 

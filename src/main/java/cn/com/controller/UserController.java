@@ -19,12 +19,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.google.code.kaptcha.Constants;
 
+import cn.com.bean.Children;
 import cn.com.bean.ResponseResult;
 import cn.com.bean.User;
+import cn.com.dao.ChildrenMapper;
 import cn.com.dao.NewsMapper;
 import cn.com.domain.UserDto;
+import cn.com.service.ChildrenService;
 import cn.com.service.UserService;
 
 @Controller
@@ -32,6 +36,8 @@ import cn.com.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ChildrenService childrenService;
 
 	ResponseResult<Void> result;
 
@@ -114,7 +120,10 @@ public class UserController {
 		modelMap.addAttribute("user", user);
 		return "infoEdit";
 	}
-
+	@RequestMapping("/infoEditTx.do")
+	public String infoEditTx() {
+		return "editPhoto";
+	}
 	@RequestMapping("/save.do")
 	@ResponseBody
 	public ResponseResult<Void> saveMessage(@RequestParam("name") String name, @RequestParam("gender") String gender,
@@ -130,30 +139,52 @@ public class UserController {
 		result.setMessage("sucess");
 		return result;
 	}
+
 	@RequestMapping("/editpwd.do")
 	public String editPassword() {
 		return "editpwd";
 	}
-	
+
 	@RequestMapping("/infoEditPwd.do")
 	@ResponseBody
-	public ResponseResult<Void>  infoEditPwd(@RequestParam("password") String password , @RequestParam("newPassword") String newPassword,@RequestParam("conformPassword")String conformPassword,HttpSession session) {
-	String username=(String)session.getAttribute("username");
-	String 	queryPassword =	userService.findUserPasswordByUsername((String)session.getAttribute("username"));
-	
-	result=new ResponseResult<Void>();
-	if (queryPassword.equals(password)&&newPassword.equals(conformPassword)) {
-		userService.updatePssword(newPassword,username);
-		     result.setCode(1);
-		     result.setMessage("success");
-		     session.invalidate();
-		}else {
+	public ResponseResult<Void> infoEditPwd(@RequestParam("password") String password,
+			@RequestParam("newPassword") String newPassword, @RequestParam("conformPassword") String conformPassword,
+			HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		String queryPassword = userService.findUserPasswordByUsername((String) session.getAttribute("username"));
+
+		result = new ResponseResult<Void>();
+		if (queryPassword.equals(password) && newPassword.equals(conformPassword)) {
+			userService.updatePssword(newPassword, username);
+			result.setCode(1);
+			result.setMessage("success");
+			session.invalidate();
+		} else {
 			result.setCode(-1);
 			result.setMessage("fail");
 		}
 		return result;
 	}
 
-	
-	
+	@RequestMapping("/adoptChildren.do")
+	@ResponseBody
+	public ResponseResult<Void> adoptChildren(@RequestParam("childrenId") Integer childrenId, HttpSession session) {
+		Integer id = (Integer) session.getAttribute("uid");
+		result = new ResponseResult<Void>();
+		if (id == null) {
+			result.setCode(-1);
+			result.setMessage("请先登陆");
+			return result;
+		}
+		Children children=childrenService.findChildrenById(childrenId);
+		if (children.getUname()!=null) {
+			result.setCode(-1);
+			result.setMessage("已被领养");
+			return result;
+		}
+		userService.adoptChildren(childrenId, id);
+		result.setCode(1);
+		result.setMessage("以提交等待审核");
+		return result;
+	}
 }

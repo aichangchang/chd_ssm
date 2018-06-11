@@ -10,13 +10,13 @@ public class User {
 	private String gender;
 	private Integer age;
 	private Date birthday;
-	private String nation;
+	private Integer access;
 	private String education;
 	private String maritalStatus;
 	private String phone;
 	private String email;
 	private String family;
-	private String photo;
+	private Integer departmentId;
 	private String idNumber;
 	private String address;
 	private String caseHistory;
@@ -89,12 +89,12 @@ public class User {
 		this.birthday = birthday;
 	}
 
-	public String getNation() {
-		return nation;
+	public Integer getAccess() {
+		return access;
 	}
 
-	public void setNation(String nation) {
-		this.nation = nation;
+	public void setAccess(Integer access) {
+		this.access = access;
 	}
 
 	public String getEducation() {
@@ -155,12 +155,13 @@ public class User {
 		this.family = family;
 	}
 	
-	public String getPhoto() {
-		return photo;
+		
+	public Integer getDepartmentId() {
+		return departmentId;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setDepartmentId(Integer departmentId) {
+		this.departmentId = departmentId;
 	}
 
 	public String getCaseHistory() {
@@ -198,10 +199,11 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", gender="
-				+ gender + ", age=" + age + ", birthday=" + birthday + ", nation=" + nation + ", education=" + education
+				+ gender + ", age=" + age + ", birthday=" + birthday + ", access=" + access + ", education=" + education
 				+ ", maritalStatus=" + maritalStatus + ", phone=" + phone + ", email=" + email + ", family=" + family
-				+ ", idNumber=" + idNumber + ", address=" + address + ", caseHistory=" + caseHistory + ", agree="
-				+ agree + ", assess=" + assess + ", childrenId=" + childrenId + "]";
+				+ ", departmentId=" + departmentId + ", idNumber=" + idNumber + ", address=" + address
+				+ ", caseHistory=" + caseHistory + ", agree=" + agree + ", assess=" + assess + ", evidence=" + evidence
+				+ ", childrenId=" + childrenId + "]";
 	}
 
 }

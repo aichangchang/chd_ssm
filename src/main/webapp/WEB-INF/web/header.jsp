@@ -36,7 +36,7 @@
 	<div class="wrap_logo">
 		<div class="logo">
 				<div class="logo_left"><img src="../images/leftlogo.png"/></div>
-				<div class="logo_right"><img src="../images/tel.jpg" width="28" height="28" />24小时服务热线：<span class="tel">158-XXXX-XXXX</span></div>
+				<div class="logo_right"><img src="../images/tel.jpg" width="28" height="28" />24小时服务热线：<span class="tel">27354895</span></div>
 				<div class="user_mobile"><img src="../images/user_green.png"/></div>
 		</div>
 	</div>

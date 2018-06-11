@@ -16,8 +16,17 @@ public class Children {
 	private String caddress;
 	private String cCaseHistory;
 	private String cagree;
+	private String uname ;
 	private String cMessage;
 	
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
 	public String getCagree() {
 		return cagree;
 	}

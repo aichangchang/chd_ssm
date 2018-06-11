@@ -292,6 +292,7 @@
 		<!--history结束-->
 	</div>
 	<!--wrap结束-->
+	<a class="lbn" href="${base}/assess/index.do" target="_blank" title="评估"><p>评估</p></a>
 	<!--to_top-->
 	<a id="to_top" class="clearfix" href="javascript:;" title="回到顶部"></a>
 	<div class="masklayer">  </div><!--遮罩层-->

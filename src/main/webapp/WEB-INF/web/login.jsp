@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<c:set value="${pageContext.request.contextPath}" var="base"></c:set>
+<c:set value="${pageContext.request.contextPath}" var="base"></c:set>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
    	<link rel="stylesheet" type="text/css" href="../css/main.css"/ media="screen and (min-width:481px)">
 	<link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
-
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../plugins/dialog.js"></script>

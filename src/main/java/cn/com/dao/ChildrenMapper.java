@@ -19,8 +19,9 @@ public interface ChildrenMapper {
 	
 	void deleteChildren(Integer id);
 	
-	void updateChildren(@Param("id") Integer id,@Param("number") Integer number, @Param("name") String name,@Param("gender") String gender,
-			@Param("birthday") Date birthday,@Param("reach") Date reach,@Param("caseHistory") String caseHistory,@Param("record") String record,
-			@Param("agree") Integer agree);
+	void updateChildren(@Param("id") Integer id,@Param("number") Integer number, @Param("cname") String name,@Param("cgender") String gender,
+			@Param("cbirthday") Date birthday,@Param("reach") Date reach,@Param("cCaseHistory") String caseHistory,@Param("cMessage") String record,
+			@Param("cagree") Integer agree,@Param("uname") String uname );
     
+	List<Children> listAdoptChildren();
 }

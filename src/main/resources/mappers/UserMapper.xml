@@ -12,7 +12,7 @@
 		gender,
 		age,
 		birthday,
-		nation,
+		access,
 		education,
 		marital_status maritalStatus,
 		phone,
@@ -52,7 +52,7 @@
 		u.gender,
 		u.age,
 		u.birthday,
-		u.nation,
+		u.access,
 		u.education,
 		u.marital_status	maritalStatus ,
 		u.phone,
@@ -84,7 +84,7 @@
 		gender,
 		age,
 		birthday,
-		nation,
+		access,
 		education,
 		marital_status maritalStatus,
 		phone,
@@ -123,7 +123,7 @@
 		gender,
 		age,
 		birthday,
-		nation,
+		 access,
 		education,
 		marital_status maritalStatus,
 		phone,
@@ -138,4 +138,9 @@
 		children_id childrenId
 		FROM user WHERE children_id=#{childrenId}
 	</select>
+	<update id="adoptChildren">
+		UPDATE user SET	
+		children_id=#{childrenId}
+		WHERE id=#{id}
+	</update>
 </mapper>

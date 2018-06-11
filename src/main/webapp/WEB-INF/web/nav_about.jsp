@@ -8,12 +8,15 @@
 <title></title>
 <link rel="shortcut icon" href="images/favicon.ico"/><!--加图标-->
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="../css/main.css" media="screen and (min-width:481px)"/>
 <link rel="stylesheet" type="text/css" href="../css/main480.css" media="screen and (max-width:480px)"/>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script src="../plugins/myFocus/myfocus-2.0.4.min.js" type="text/javascript" charset="utf-8"></script><!--引入myFocus库-->
 <script type="text/javascript" src="../js/content.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/dialog.js"></script>
 <script type="text/javascript">
 myFocus.set({
 	id:'boxID',//焦点图盒子ID
@@ -76,6 +79,9 @@ $(document).ready(function(){
 		});
 	});
 </script>
+<style type="text/css">
+
+</style>
 </head>
 <body>
 	<c:import url="header.jsp"></c:import>
@@ -110,7 +116,7 @@ $(document).ready(function(){
 	<div class="footer">
 		<div class="footer_text">
 			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb">我的GitHub</a>
-			<span class="copyright fl">儿童医院 <i>cc</i></span>
+			<span class="copyright fl">某儿童孤儿院<i>cc</i></span>
 			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号"></a>
 		</div>
 	</div>
@@ -129,7 +135,38 @@ $(document).ready(function(){
 		$(".content_right").load("c_about.do?id=3");
 		break;
 	case 4:
-		$(".content_right").load("c_about.do?id=4");
+		$.ajax({
+			type:"post",
+			url:"handleAdopt.do",
+			dataType:"json",
+			success:function(data){
+				var d1= dialog({
+					content:'<span class=\'save_start\'>正在验证您的信息。</span>'
+				});
+				$(document).ajaxStart(function(){
+					d1.show();					 
+				});
+				if(data.code==1){
+					d1.close().remove();//关闭中间过度动画
+					var d= dialog({
+						content:'<span class=\'save_success\'>'+data.message+'</span>',
+					});
+					d.show();
+					setTimeout(function(){
+						d.close().remove();
+					},2500);
+					window.location="adopt.do";
+				}
+				else{
+					d1.close().remove();//关闭中间过度动画
+					alert(data.message);
+					window.location="index.do"
+				}
+			},
+			error:function(jqXHR){
+				alert("发生错误:"+jqXHR.status);
+			},
+		});
 		break;
 	case 13:
 		$(".content_right").load("c_contact.do");

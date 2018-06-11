@@ -79,17 +79,17 @@
 						<h3><span>+</span>部门管理</h3>
 						<ul class="menu_item_child none">
 							<li>
-								<a href="listDepartment.php" target="mainFrame">
+								<a href="listDepartment.do" target="mainFrame">
 									部门列表
 								</a>
 							</li>
 							<li>
-								<a href="addDepartment.php" target="mainFrame">
+								<a href="addDepartment.do" target="mainFrame">
 									添加部门
 								</a>
 							</li>
 							<li>
-								<a href="detialDep.php" target="mainFrame">
+								<a href="detialDep.do" target="mainFrame">
 									部门详情
 								</a>
 							</li>
@@ -99,12 +99,12 @@
 						<h3><span>+</span>人事管理</h3>
 						<ul class="menu_item_child none">
 							<li style="display: <?php echo $row['isAdmin']=='0'?'none':'block'; ?>;">
-								<a href="listEmployee.php" target="mainFrame" >
+								<a href="listEmployee.do" target="mainFrame" >
 									员工列表
 								</a>
 							</li>
 							<li>
-								<a href="detialEmployee.php" target="mainFrame">
+								<a href="detialEmployee.do" target="mainFrame">
 									员工信息
 								</a>
 							</li>

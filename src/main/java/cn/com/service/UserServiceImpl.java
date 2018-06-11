@@ -68,8 +68,12 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-	public User findUserByChildrenId(Integer id) {
+	public List<User> findUserByChildrenId(Integer id) {
 		return userMapper.findUserByChildrenId(id);
+	}
+
+	public void adoptChildren(Integer childrenId, Integer id) {
+		 userMapper.adoptChildren(childrenId, id);
 	}
 
 }

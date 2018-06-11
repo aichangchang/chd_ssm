@@ -134,7 +134,7 @@ $(document).ready(function(){
 			
 			<div class="a_content">
 				<!--文章内容放这里-->
-				<c:out value="${news.content}"></c:out>	
+				<c:out value="${news.content}" escapeXml="false"></c:out>	
 			</div>
 		</div><!--content_right结束-->
 	</div><!--content结束-->
@@ -142,8 +142,8 @@ $(document).ready(function(){
 	<a id="to_top" href="javascript:;" title="回到顶部"></a>
 	<div class="footer">
 		<div class="footer_text">
-			<a class="github fl" href="https://github.com/heguofeng" target="_blank" title="我的个人GitHUb"></a>
-			<span class="copyright fl">儿童医院 <i>cc</i></span>
+			<a class="github fl" href="####" target="_blank" title="我的个人GitHUb">我的个人GitHUb</a>
+			<span class="copyright fl">某孤儿院 <i>魏畅</i></span>
 			<a class="icp fl" href="http://www.miitbeian.gov.cn" target="_blank" title="浙ICP备17016736号"></a>
 		</div>
 	</div>

@@ -19,9 +19,9 @@ public interface ChildrenService {
 
 	void deleteChildren(Integer id);
 	
-	void updateChildren(Integer id, Integer number,  String name, String gender,
-			 Date birthday, Date reach, String caseHistory, String record,
-			 Integer agree);
-
+	void updateChildren(Integer id, Integer number,  String cname, String cgender,
+			 Date cbirthday, Date reach, String cCaseHistory, String record,
+			 Integer cagree,String uname);
+	List<Children>	listAdoptChildren();
 	
 }

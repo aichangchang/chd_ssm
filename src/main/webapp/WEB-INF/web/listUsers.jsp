@@ -39,11 +39,10 @@
             <thead>
                 <tr>
                     <th width="5%">编号</th>
-                    <th width="10%">用户账号</th>
-                    <th width="10%">用户姓名</th>
-                    <th width="5%">性别</th>
-                    <th width="10%">领养儿童</th>
-                    <th width="20%">评估</th>
+                    <th width="15%">用户账号</th>
+                    <th width="15%">用户姓名</th>
+                    <th width="10%">性别</th>
+                    <th width="15%">领养儿童</th>
                     <th width="10%">是否同意</th>
                     <th>操作</th>
                 </tr>
@@ -56,14 +55,12 @@
                     <td><a href="detialUsers.php?id=${users.id}">${users.name}</a></td>
                     <td>${users.gender}</td>
                     <td>${users.cname}</td>
-               		<td><c:if test="${users.assess==null}">               	
-						 暂无评估
-               		</c:if>${users.assess}</td>
                		<td>${users.agree eq 1 ? "同意":"不同意" }</td>
                     <td align="left">
                     	<input type="button" value="详细信息" class="btn btn-info"  onclick="detialUsers(${users.id})">	
                     	<input type="button" value="修改资料" class="btn btn-success" onclick="editUsers(${users.id})">
-                    	<input type="button" value="删除用户" class="btn btn-danger"  onclick="delUsers(${users.id})">
+                    	<input type="button" value="评估" class="btn btn-info"  onclick="assessUsers(${users.id})">
+                    	<input type="button" value="删除" class="btn btn-danger"  onclick="delUsers(${users.id})">
                     	<%-- <?php if($row['u_bed']==0): ?>	
                     	<input type="button" value="入住" class="btn btn-primary" onclick="checkIn(<?php echo $row['id']; ?>)">
                     		<?php else: ?>
@@ -99,8 +96,8 @@ function delUsers(id) {
 function detialUsers(id) {
 	window.location = "detialUsers.do?id=" + id;
 }
-function checkIn(id){
-	window.location = "checkIn.php?id=" + id;
+function assessUsers(id){
+	window.location = "assessUser.do?id=" + id;
 }
 function changeBed(id){
 	window.location = "changeBed.php?id=" + id;
